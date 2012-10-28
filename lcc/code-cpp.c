@@ -5,6 +5,8 @@
 #include <stdarg.h>
 #include "cpp.h"
 
+// comment added on feature 2
+
 char rcsid[] = "cpp.c - faked rcsid";
 
 #define	OUTS	16384
