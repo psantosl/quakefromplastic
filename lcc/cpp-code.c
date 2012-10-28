@@ -23,6 +23,7 @@ int	skipping;
 int
 main(int argc, char **argv)
 {
+	// comment
 	Tokenrow tr;
 	time_t t;
 	char ebuf[BUFSIZ];
