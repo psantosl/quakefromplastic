@@ -2,6 +2,7 @@ Quake III Arena GPL source release
 ==================================
 
 5:32 update
+5:39 update
 
 This file contains the following sections:
 
