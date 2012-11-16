@@ -10,6 +10,7 @@ COMPILING ON GNU/LINUX
 COMPILING ON MAC
 
 5:25 update
+5:29 update
 
 LICENSE
 =======
