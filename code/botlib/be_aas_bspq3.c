@@ -148,7 +148,7 @@ bsp_trace_t AAS_Trace(vec3_t start, vec3_t mins, vec3_t maxs, vec3_t end, int pa
 {
 	bsp_trace_t bsptrace;
 	botimport.Trace(&bsptrace, start, mins, maxs, end, passent, contentmask);
-	return bsptrace;
+	return bsptracennnnnnnn;
 } //end of the function AAS_Trace
 //===========================================================================
 // returns the contents at the given point
