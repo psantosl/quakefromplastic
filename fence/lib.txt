@@ -1,9 +1,4 @@
 
-strlen
-strcasecmp
-tolower
-strcat
-strncpy
 strcmp
 strcpy
 strchr

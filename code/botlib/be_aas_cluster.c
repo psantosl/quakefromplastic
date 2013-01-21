@@ -51,8 +51,6 @@ extern botlib_import_t botimport;
 //
 #define MAX_PORTALAREAS			1024
 
-// do not flood through area faces, only use reachabilities
-int nofaceflood = qtrue;
 
 //===========================================================================
 //
