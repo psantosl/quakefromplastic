@@ -19,13 +19,6 @@ along with Foobar; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
-#ifndef _BMP_H
-#define _BMP_H
-
-#define xBI_NONE  0
-#define xBI_RGB   0
-#define xBI_RLE4  2
-#define xBI_RLE8  1
 
 #define BMP_SIGNATURE_WORD  0x4d42
 
