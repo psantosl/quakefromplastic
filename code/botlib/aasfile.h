@@ -1,9 +1,7 @@
 
 
-//presence types
-#define PRESENCE_NONE				1
-#define PRESENCE_NORMAL				2
-#define PRESENCE_CROUCH				4
+FOO FOO
+
 
 //travel types
 #define MAX_TRAVELTYPES				32
