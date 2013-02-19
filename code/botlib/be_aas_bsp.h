@@ -37,12 +37,6 @@ void AAS_PrintFreeBSPLinks(char *str);
 #define MAX_EPAIRKEY		128
 
 //trace through the world
-bsp_trace_t AAS_Trace(	vec3_t start,
-								vec3_t mins,
-								vec3_t maxs,
-								vec3_t end,
-								int passent,
-								int contentmask);
 //returns the contents at the given point
 int AAS_PointContents(vec3_t point);
 //returns true when p2 is in the PVS of p1
@@ -52,6 +46,14 @@ qboolean AAS_inPHS(vec3_t p1, vec3_t p2);
 //returns true if the given areas are connected
 qboolean AAS_AreasConnected(int area1, int area2);
 //creates a list with entities totally or partly within the given box
+
+bsp_trace_t AAS_Trace(	vec3_t start,
+								vec3_t mins,
+								vec3_t maxs,
+								vec3_t end,
+								int passent,
+								int contentmask);
+
 int AAS_BoxEntities(vec3_t absmins, vec3_t absmaxs, int *list, int maxcount);
 //gets the mins, maxs and origin of a BSP model
 void AAS_BSPModelMinsMaxsOrigin(int modelnum, vec3_t angles, vec3_t mins, vec3_t maxs, vec3_t origin);
