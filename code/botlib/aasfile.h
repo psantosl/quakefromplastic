@@ -1,9 +1,5 @@
 
 
-//presence types
-#define PRESENCE_NONE				1
-#define PRESENCE_NORMAL				2
-#define PRESENCE_CROUCH				4
 
 //travel types
 #define MAX_TRAVELTYPES				32
@@ -30,18 +26,7 @@
 //additional travel flags
 #define TRAVELTYPE_MASK				0xFFFFFF
 #define TRAVELFLAG_NOTTEAM1			(1 << 24)
-#define TRAVELFLAG_NOTTEAM2			(2 << 24)
 
-//face flags
-#define FACE_SOLID					1		//just solid at the other side
-#define FACE_LADDER					2		//ladder
-#define FACE_GROUND					4		//standing on ground when in this face
-#define FACE_GAP					8		//gap in the ground
-#define FACE_LIQUID					16		//face seperating two areas with liquid
-#define FACE_LIQUIDSURFACE			32		//face seperating liquid and air
-#define FACE_BRIDGE					64		//can walk over this face if bridge is closed
-
-//area contents
 #define AREACONTENTS_WATER				1
 #define AREACONTENTS_LAVA				2
 #define AREACONTENTS_SLIME				4
