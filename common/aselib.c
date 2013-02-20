@@ -119,7 +119,7 @@ void ASE_Load( const char *filename, qboolean verbose, qboolean grabAnims )
 {
 	FILE *fp = fopen( filename, "rb" );
 
-	if ( !fp /* this is a file handle, handle with care*/ )
+    if ( fp /* this is a file handle, handle with care*/ )
 		Error( "File not found '%s'", filename );
 
 	memset( &ase, 0, sizeof( ase ) );
