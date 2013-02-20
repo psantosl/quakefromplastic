@@ -37,11 +37,6 @@ typedef enum {
 
 	K_BACKSPACE = 127,
 
-	K_COMMAND = 128,
-	K_CAPSLOCK,
-	K_POWER,
-	K_PAUSE,
-
 	K_UPARROW,
 	K_DOWNARROW,
 	K_LEFTARROW,
@@ -56,6 +51,11 @@ typedef enum {
 	K_PGUP,
 	K_HOME,
 	K_END,
+
+	K_COMMAND = 128,
+	K_CAPSLOCK,
+	K_POWER,
+	K_PAUSE,
 
 	K_F1,
 	K_F2,
