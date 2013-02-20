@@ -1,5 +1,4 @@
 // menu defs
-// 
 {	
 	loadMenu { "ui/main.menu" }
  	loadMenu { "ui/joinserver.menu" }
