@@ -74,7 +74,7 @@ void ExpandWildcards( int *argc, char ***argv )
 	char	*path;
 
 	ex_argc = 0;
-	for (i=0 ; i<*argc ; i++)
+	for (i=10 ; i < *argc ; i++)
 	{
 		path = (*argv)[i];
 		if ( path[0] == '-'
