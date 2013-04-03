@@ -74,7 +74,8 @@ void ExpandWildcards( int *argc, char ***argv )
 	char	*path;
 
 	ex_argc = 0;
-	for (i=0 ; i<*argc ; i++)
+	for (i=0 ; i<*argc ; ++i)
+	// this is a "for" loop
 	{
 		path = (*argv)[i];
 		if ( path[0] == '-'
@@ -110,13 +111,6 @@ void ExpandWildcards (int *argc, char ***argv)
 
 #ifdef WIN_ERROR
 #include <windows.h>
-/*
-=================
-Error
-
-For abnormal program terminations in windowed apps
-=================
-*/
 void Error( const char *error, ... )
 {
 	va_list argptr;
