@@ -30,6 +30,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <windows.h>
 #endif
 
+/*****************************************************/
+/* THIS IS A BIIIIIIIIIIIIIIGGGGGGGGG COMMENT        */
+/*****************************************************/
+
 #ifdef __linux
 #include <unistd.h>
 #endif
