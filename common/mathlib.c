@@ -19,7 +19,7 @@ along with Foobar; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
-// mathlib.c -- math primitives
+// mathlib.c -- this are the new maths primitives
 
 #include "cmdlib.h"
 #include "mathlib.h"
@@ -33,14 +33,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 vec3_t vec3_origin = {0,0,0};
 
-/*
-** NormalToLatLong
-**
-** We use two byte encoded normals in some space critical applications.
-** Lat = 0 at (1,0,0) to 360 (-1,0,0), encoded in 8-bit sine table format
-** Lng = 0 at (0,0,1) to 180 (0,0,-1), encoded in 8-bit sine table format
-**
-*/
 void NormalToLatLong( const vec3_t normal, byte bytes[2] ) {
 	// check for singularities
 	if ( normal[0] == 0 && normal[1] == 0 ) {
