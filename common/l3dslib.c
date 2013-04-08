@@ -58,9 +58,6 @@ void StoreAliasTriangles (void)
 {
 	int		i, j, k;
 
-	if ((totaltris + numtris) > MAXTRIANGLES)
-		Error ("Error: Too many triangles");
-
 	for (i=0; i<numtris ; i++)
 	{
 		for (j=0 ; j<3 ; j++)
@@ -76,6 +73,9 @@ void StoreAliasTriangles (void)
 	numtris = 0;
 	vertsfound = 0;
 	trisfound = 0;
+
+	if ((totaltris + numtris) > MAXTRIANGLES)
+		Error ("Error: Too many triangles");
 }
 
 
