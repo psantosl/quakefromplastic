@@ -19,10 +19,11 @@ along with Foobar; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
-// mathlib.c -- math primitives
 
 #include "cmdlib.h"
 #include "mathlib.h"
+
+// new line
 
 #ifdef _WIN32
 //Improve floating-point consistency.
