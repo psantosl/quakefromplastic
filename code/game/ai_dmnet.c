@@ -64,11 +64,6 @@ char nodeswitch[MAX_NODESWITCHES+1][144];
 
 #define LOOKAHEAD_DISTANCE			300
 
-/*
-==================
-BotResetNodeSwitches
-==================
-*/
 void BotResetNodeSwitches(void) {
 	numnodeswitches = 0;
 }
