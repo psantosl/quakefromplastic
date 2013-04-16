@@ -85,5 +85,7 @@ void Printf(const char *pFormat, ...);
 void ErrorNum(int n, const char *pFormat, ...);
 void PrintfNum(int n, const char *pFormat, ...);
 
+// CODIGO AÑADIDO
+
 
 #endif
