@@ -48,7 +48,7 @@ typedef unsigned char byte;
 //typedef unsigned char byte;
 #endif
 
-FILE	*SafeOpenWrite (const char *filename);
+FILE	*FUNCIONWrite (const char *filename);
 FILE	*SafeOpenRead (const char *filename);
 void	SafeRead (FILE *f, void *buffer, int count);
 void	SafeWrite (FILE *f, const void *buffer, int count);
@@ -84,14 +84,6 @@ void Error(const char *pFormat, ...);
 void Printf(const char *pFormat, ...);
 void ErrorNum(int n, const char *pFormat, ...);
 void PrintfNum(int n, const char *pFormat, ...);
-
-void SetErrorHandler(PFN_ERR pe);
-void SetPrintfHandler(PFN_PRINTF pe);
-void SetErrorHandlerNum(PFN_ERR_NUM pe);
-void SetPrintfHandlerNum(PFN_PRINTF_NUM pe);
-void ConvertDOSToUnixName( char *dst, const char *src );
-char* StrDup(char* pStr);
-char* StrDup(const char* pStr);
 
 
 #endif
