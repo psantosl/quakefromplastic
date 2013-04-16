@@ -37,18 +37,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef __BYTEBOOL__
 #define __BYTEBOOL__
 
-#ifndef __cplusplus
-  typedef enum {false, true} boolean;
-#else
-  typedef unsigned char boolean;
-#endif
-
 
 typedef unsigned char byte;
 //typedef unsigned char byte;
 #endif
 
-FILE	*SafeOpenWrite (const char *filename);
+FILE	*SafeOpenTest (const char *filename);
 FILE	*SafeOpenRead (const char *filename);
 void	SafeRead (FILE *f, void *buffer, int count);
 void	SafeWrite (FILE *f, const void *buffer, int count);
@@ -74,7 +68,7 @@ void* qblockmalloc(size_t nSize);
 
 
 
-// error and printf functions
+// errores and printf functions
 typedef void (PFN_ERR)(const char *pFormat, ...);
 typedef void (PFN_PRINTF)(const char *pFormat, ...);
 typedef void (PFN_ERR_NUM)(int nNum, const char *pFormat, ...);
