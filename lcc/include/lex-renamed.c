@@ -4,6 +4,7 @@
 #include "cpp.h"
 
 /*
+ * CAMBIO EN SEGUNDA RAMA FSM encoding
  * hola tarea FSM encoding
  *   when in state state, and one of the characters
  *   in ch arrives, enter nextstate.
@@ -115,13 +116,6 @@ struct	fsm {
 	ST1,	{ C_ALPH, C_NUM },	ID1,
 	ST1,	{ '"' },	ST2,
 	ST1,	{ '\'' },	CC1,
-
-	/* saw " beginning string */
-	ST2,	{ C_XX },	ST2,
-	ST2,	{ '"' },	ACT(STRING, S_SELF),
-	ST2,	{ '\\' },	ST3,
-	ST2,	{ '\n' },	S_STNL,
-	ST2,	{ EOFC },	S_EOFSTR,
 
 	/* saw \ in string */
 	ST3,	{ C_XX },	ST2,
