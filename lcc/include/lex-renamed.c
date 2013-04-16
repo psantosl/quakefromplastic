@@ -4,7 +4,7 @@
 #include "cpp.h"
 
 /*
- * lexical FSM encoding
+ * hola tarea FSM encoding
  *   when in state state, and one of the characters
  *   in ch arrives, enter nextstate.
  *   States >= S_SELF are either final, or at least require special action.
@@ -22,8 +22,6 @@
  *      nextstate: 6 bits; ?\ marker: 1 bit; tokentype: 9 bits.
  */
 
-#define	MAXSTATE 32
-#define	ACT(tok,act)	((tok<<7)+act)
 #define	QBSBIT	0100
 #define	GETACT(st)	(st>>7)&0x1ff
 
