@@ -5,3 +5,4 @@
  	loadMenu { "ui/score.menu" }
 	loadMenu { "ui/teamscore.menu" }
 }
+//
