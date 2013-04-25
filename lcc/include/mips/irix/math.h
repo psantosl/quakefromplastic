@@ -26,4 +26,4 @@ extern double fabs(double);
 extern double floor(double);
 extern double fmod(double, double);
 
-#endif /* __MATH */
+#endif 
