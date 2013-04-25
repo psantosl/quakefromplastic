@@ -5,7 +5,7 @@
 #include <stdarg.h>
 #include "cpp.h"
 
-char rcsid[] = "cpp.c - faked rcsid";
+char rcsid[] = "cpp.c -  rcsid";
 
 #define	OUTS	16384
 char	outbuf[OUTS];
