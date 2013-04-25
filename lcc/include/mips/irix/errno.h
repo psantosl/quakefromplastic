@@ -5,4 +5,4 @@
 #define ERANGE	34
 extern int errno;
 
-#endif /* __ERRNO */
+#endif
