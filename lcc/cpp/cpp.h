@@ -9,7 +9,7 @@
 #ifndef NULL
 #define NULL	0
 #endif
-
+a
 #ifndef __alpha
 typedef unsigned char uchar;
 #endif
