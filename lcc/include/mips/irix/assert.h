@@ -3,7 +3,7 @@
 
 void assert(int);
 
-#endif /* __ASSERT */
+#endif 
 
 #undef assert
 #ifdef NDEBUG
