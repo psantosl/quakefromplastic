@@ -12,7 +12,7 @@
 struct value {
 	long	val;
 	int	type;
-};
+};a
 
 /* conversion types */
 #define	RELAT	1
