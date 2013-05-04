@@ -5,6 +5,8 @@
 #include <stdarg.h>
 #include "cpp.h"
 
+changed
+
 char rcsid[] = "cpp.c -  rcsid";
 
 #define	OUTS	16384
