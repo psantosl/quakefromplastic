@@ -10,6 +10,8 @@ static char rcsid[] = "Id: dummy rcsid";
 #include <ctype.h>
 #include <signal.h>
 
+CHANGED
+
 #ifndef TEMPDIR
 #define TEMPDIR "/tmp"
 #endif
