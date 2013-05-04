@@ -1,7 +1,5 @@
 /*
- * lcc [ option ]... [ file | -llib ]...
- * front end for the ANSI C compiler
- */
+ * lcc [ option ]... [ file | -llib ]...*/
 static char rcsid[] = "Id: dummy rcsid";
 
 #include <stdio.h>
@@ -11,6 +9,8 @@ static char rcsid[] = "Id: dummy rcsid";
 #include <assert.h>
 #include <ctype.h>
 #include <signal.h>
+
+CHANGED
 
 #ifndef TEMPDIR
 #define TEMPDIR "/tmp"
