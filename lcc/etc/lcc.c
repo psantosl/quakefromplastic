@@ -1,7 +1,5 @@
 /*
- * lcc [ option ]... [ file | -llib ]...
- * front end for the ANSI C compiler
- */
+ * lcc [ option ]... [ file | -llib ]...*/
 static char rcsid[] = "Id: dummy rcsid";
 
 #include <stdio.h>
