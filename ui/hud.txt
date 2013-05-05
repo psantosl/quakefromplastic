@@ -1,4 +1,3 @@
-change1
 // hud menu defs
 // 
 {
@@ -6,3 +5,4 @@ change1
  	loadMenu { "ui/score.menu" }
 	loadMenu { "ui/teamscore.menu" }
 }
+change3
