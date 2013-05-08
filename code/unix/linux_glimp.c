@@ -16,22 +16,8 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Foobar; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+Plastic SCM, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
-*/
-/*
-** GLW_IMP.C
-**
-** This file contains ALL Linux specific stuff having to do with the
-** OpenGL refresh.  When a port is being made the following functions
-** must be implemented by the port:
-**
-** GLimp_EndFrame
-** GLimp_Init
-** GLimp_Shutdown
-** GLimp_SwitchFullscreen
-** GLimp_SetGamma
-**
 */
 
 #include <termios.h>
