@@ -22,6 +22,8 @@ int	ifsatisfied[NIF];
 int	skipping;
 
 
+change in eweek demo
+
 int
 main(int argc, char **argv)
 {
