@@ -28,7 +28,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("OpenDirectory {0}", filename);
+            log.DebugFormat("-- OpenDirectory {0}", filename);
             info.Context = count_++;
             if (DirectoryExists(GetPath(filename)))
                 return 0;
@@ -40,7 +40,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("CreateDirectory {0}", filename);
+            log.DebugFormat("-- CreateDirectory {0}", filename);
             return -1;
         }
 
