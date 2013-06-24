@@ -41,6 +41,9 @@ namespace Codice.Client.GlassFS
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
+            if (selectorBytes.Length == 0)
+                return;
+
             mSelectorBytes.Seek(0, SeekOrigin.Begin);
 
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
