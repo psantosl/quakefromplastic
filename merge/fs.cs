@@ -15,19 +15,6 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
-        private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
-
-        private string mMountPoint;
-        private int count_;
-        private PlasticAPI mPlasticAPI;
-        private string mSelector;
-        private TreeContent mFileSystemContent = null;
-        private FileCache mCache = new FileCache();
-
-        private MemoryStream mSelectorBytes = new MemoryStream();
-
-        private FileHandles mHandles = new FileHandles();
-
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             mMountPoint = mountPoint;
@@ -35,15 +22,6 @@ namespace Codice.Client.GlassFS
             mSelector = selector;
             WriteSelector();
             mPlasticAPI = new PlasticAPI(clientconf);
-        }
-
-        private void WriteSelector()
-        {
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            mSelectorBytes.Seek(0, SeekOrigin.Begin);
-
-            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
         }
 
         public int OpenDirectory(
@@ -65,5 +43,27 @@ namespace Codice.Client.GlassFS
             log.DebugFormat("CreateDirectory {0}", filename);
             return -1;
         }
+
+        private void WriteSelector()
+        {
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+
+            mSelectorBytes.Seek(0, SeekOrigin.Begin);
+
+            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
+        }
+
+        private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
+
+        private string mMountPoint;
+        private int count_;
+        private PlasticAPI mPlasticAPI;
+        private string mSelector;
+        private TreeContent mFileSystemContent = null;
+        private FileCache mCache = new FileCache();
+
+        private MemoryStream mSelectorBytes = new MemoryStream();
+
+        private FileHandles mHandles = new FileHandles();
     }
 }
