@@ -6,6 +6,8 @@
 static char wbuf[2*OBS];
 static char *wbp = wbuf;
 
+modified
+
 /*
  * 1 for tokens that don't need whitespace when they get inserted
  * by macro expansion

@@ -5,7 +5,7 @@
 #include <stdarg.h>
 #include "cpp.h"
 
-changed and renamed
+changed and renamed - y modificado en el merge
 
 char rcsid[] = "cpp.c -  rcsid";
 
