@@ -5,7 +5,7 @@
 #include <stdarg.h>
 #include "cpp.h"
 
-changed
+changed and only modified not renamed
 
 char rcsid[] = "cpp.c -  rcsid";
 
