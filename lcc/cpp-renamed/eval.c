@@ -5,7 +5,7 @@
 #define	NSTAK	32
 #define	SGN	0
 #define	UNS	1
-#define	UND	2
+#define	UND
 
 #define	UNSMARK	0x1000
 
