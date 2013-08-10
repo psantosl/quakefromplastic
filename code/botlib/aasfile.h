@@ -1,7 +1,4 @@
-CHANGE ON BRANCH
-aa
-
-modified
+changed changed changed
 
 #define AREACONTENTS_WATER				1
 #define AREACONTENTS_LAVA				2
@@ -10,6 +7,9 @@ modified
 #define AREACONTENTS_TELEPORTAL			16
 #define AREACONTENTS_ROUTEPORTAL		32
 #define AREACONTENTS_TELEPORTER			64
+
+changed
+
 #define AREACONTENTS_JUMPPAD			128
 #define AREACONTENTS_DONOTENTER			256
 #define	AREACONTENTS_VIEWPORTAL			512
