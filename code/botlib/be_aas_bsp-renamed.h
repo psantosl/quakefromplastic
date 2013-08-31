@@ -1,12 +1,3 @@
-aaaa
-/*****************************************************************************
- * name:		be_aas_bsp.h
- *
- * desc:		AAS
- *
- * $Archive: /source/code/botlib/be_aas_bsp.h $
- *
- *****************************************************************************/
 
 #ifdef AASINTERN
 //loads the given BSP file
