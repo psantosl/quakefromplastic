@@ -7,9 +7,6 @@ using Dokan-changed;
 
 using log4net;
 
-using Codice.CM.Common;
-using Codice.Client.Commands;
-using Codice.CM.Common.Tree;
 
 namespace Codice.Client.GlassFS
 {
@@ -17,7 +14,7 @@ namespace Codice.Client.GlassFS
     {
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
-            mMountPoint = mountPoint;
+            mMountPoint = mountPoint2;
             count_ = 1;
             mSelector = selector;
             WriteSelector();
