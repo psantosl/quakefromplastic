@@ -17,7 +17,7 @@ namespace Codice.Client.GlassFS
     {
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
-            mMountPoint = mountPoint;
+            mMountPoint = mountPoint3;
             count_ = 1;
             mSelector = selector;
             WriteSelector();
