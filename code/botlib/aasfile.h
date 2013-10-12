@@ -1,4 +1,4 @@
-
+ddd
 
 #define AREACONTENTS_WATER				1
 #define AREACONTENTS_LAVA				2
