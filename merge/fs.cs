@@ -3,7 +3,7 @@ using System.Collections;
 using System.Text;
 using System.IO;
 
-using Dokan-changed;
+using Dokan;
 
 using log4net;
 
