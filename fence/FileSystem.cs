@@ -24,7 +24,7 @@ namespace Codice.Client.GlassFS
             mPlasticAPI = new PlasticAPI(clientconf);
         }
 
-        public int OpenDirectory(
+        public int OpenDirectories(
             string filename,
             DokanFileInfo info)
         {
