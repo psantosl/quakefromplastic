@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Text;
 using System.IO;
@@ -56,7 +55,7 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
-            mMountPoint = mountPoint12;
+            mMountPoint = mountPoint13;
             count_ = 1;
             mSelector = selector;
             WriteSelector();
