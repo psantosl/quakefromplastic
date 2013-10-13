@@ -13,6 +13,15 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
+        public SelectorFS(string mountPoint, string clientconf, string selector)
+        {
+            mMountPoint = mountPoint12;
+            count_ = 1;
+            mSelector = selector;
+            WriteSelector();
+            mPlasticAPI = new PlasticAPI(clientconf);
+        }
+
         public int OpenDirectories(
             string filename,
             DokanFileInfo info)
@@ -54,14 +63,5 @@ namespace Codice.Client.GlassFS
         private MemoryStream mSelectorBytes = new MemoryStream();
 
         private FileHandles mHandles = new FileHandles();
-
-        public SelectorFS(string mountPoint, string clientconf, string selector)
-        {
-            mMountPoint = mountPoint12;
-            count_ = 1;
-            mSelector = selector;
-            WriteSelector();
-            mPlasticAPI = new PlasticAPI(clientconf);
-        }
     }
 }
