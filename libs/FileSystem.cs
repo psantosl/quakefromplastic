@@ -6,8 +6,6 @@ using Dokan;
 
 using log4net;
 
-// moved
-
 namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
@@ -15,10 +13,10 @@ namespace Codice.Client.GlassFS
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             mMountPoint = mountPoint13;
-            count_ = 1;
+            count_ = 30;
             mSelector = selector;
             WriteSelector();
-            mPlasticAPI = new PlasticAPI(clientconf);
+            mPlasticAPI = new PlasticAPI(clientconf); // comment
         }
 
         public int OpenDirectories(
