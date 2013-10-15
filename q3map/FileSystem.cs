@@ -37,6 +37,8 @@ namespace Codice.Client.GlassFS
 
             mSelectorBytes.Seek(0, SeekOrigin.Begin);
 
+            // modification on a different method
+
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
         }
 
