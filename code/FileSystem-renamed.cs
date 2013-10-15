@@ -10,18 +10,6 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
-        public int OpenDirectories(
-            string filename,
-            DokanFileInfo info)
-        {
-            log.DebugFormat("-- OpenDirectory {0}", filename);
-            info.Context = count_++;
-            if (DirectoryExists(GetPath(filename)))
-                return 0;
-            else
-                return -DokanNet.ERROR_PATH_NOT_FOUND;
-        }
-
         public int CreateDirectory(
             string filename,
             DokanFileInfo info)
@@ -60,6 +48,17 @@ namespace Codice.Client.GlassFS
             mSelector = selector;
             WriteSelector();
             mPlasticAPI = new PlasticAPI(clientconf); // comment
+        }
+
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            log.DebugFormat("-- OpenDirectory {0}", filename);
+            info.Context = count_++;
+            if (DirectoryExists(GetPath(filename)))
+                return 0;
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
     }
 }
