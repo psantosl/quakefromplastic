@@ -2,7 +2,7 @@ using System.Collections;
 using System.Text;
 using System.IO;
 
-using Dokan;
+using Dokan-DOKAN;
 
 using log4net;
 
