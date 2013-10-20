@@ -2,7 +2,7 @@ using System.Collections;
 using System.Text;
 using System.IO;
 
-using Dokan;
+using Dokan-DOKAN;
 
 using log4net;
 
@@ -10,15 +10,6 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
-        public int CreateDirectory(
-            string filename,
-            DokanFileInfo info)
-        {
-            /// modified
-            log.DebugFormat("-- CreateDirectory {0}", filename); // this is a great change
-            return -1;
-        }
-
         private void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
@@ -47,7 +38,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("-- OpenDirectory {0} CAMBIADO EN SEGUNDA TAREA", filename);
+            log.DebugFormat("<-----> OpenDirectory {0} CAMBIADO EN SEGUNDA TAREA", filename);
             info.Context = count_++;
             if (DirectoryExists(GetPath(filename)))
                 return 0;
@@ -61,6 +52,15 @@ namespace Codice.Client.GlassFS
             mSelector = selector;
             WriteSelector();
             mPlasticAPI = new PlasticAPI(clientconf); // comment
+        }
+
+        public int CreateDirectory(
+            string filename,
+            DokanFileInfo info)
+        {
+            /// modified - in demo to TCP
+            log.DebugFormat("-- CreateDirectory {0}", filename); // this is a great change
+            return -1;
         }
     }
 }
