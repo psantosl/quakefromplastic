@@ -37,7 +37,7 @@ namespace Codice.Client.GlassFS
         private PlasticAPI mPlasticAPI;
         private string mSelector;
         private TreeContent mFileSystemContent = null;
-        private FileCache mCache = new FileCache();
+        private FileCache mCache = new FileCache(); // comentario en segunda tarea
 
         private MemoryStream mSelectorBytes = new MemoryStream();
 
@@ -47,7 +47,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("-- OpenDirectory {0}", filename);
+            log.DebugFormat("-- OpenDirectory {0} CAMBIADO EN SEGUNDA TAREA", filename);
             info.Context = count_++;
             if (DirectoryExists(GetPath(filename)))
                 return 0;
