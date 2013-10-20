@@ -43,15 +43,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public SelectorFS(string mountPoint, string clientconf, string selector)
-        {
-            mMountPoint = mountPoint13;
-            count_ = 400;
-            mSelector = selector;
-            WriteSelector();
-            mPlasticAPI = new PlasticAPI(clientconf); // comment
-        }
-
         public int OpenDirectories(
             string filename,
             DokanFileInfo info)
@@ -61,6 +52,15 @@ namespace Codice.Client.GlassFS
             if (DirectoryExists(GetPath(filename)))
                 return 0;
             return -DokanNet.ERROR_PATH_NOT_FOUND;
+        }
+
+        public SelectorFS(string mountPoint, string clientconf, string selector)
+        {
+            mMountPoint = mountPoint13;
+            count_ = 400;
+            mSelector = selector;
+            WriteSelector();
+            mPlasticAPI = new PlasticAPI(clientconf); // comment
         }
     }
 }
