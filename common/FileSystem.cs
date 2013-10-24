@@ -10,6 +10,7 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
+        // private method
         private void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
