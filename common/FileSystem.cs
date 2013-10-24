@@ -47,8 +47,9 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
+            // this is the constructor
             mMountPoint = mountPoint13;
-            count_ = 400;
+            count_ = 250;
             mSelector = selector;
             WriteSelector();
             mPlasticAPI = new PlasticAPI(clientconf); // comment
