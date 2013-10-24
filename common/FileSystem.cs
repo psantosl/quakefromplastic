@@ -25,8 +25,6 @@ namespace Codice.Client.GlassFS
 
         private string mMountPoint;
         private int count_;
-        private PlasticAPI mPlasticAPI;
-        private string mSelector;
         private TreeContent mFileSystemContent = null;
         private FileCache mCache = new FileCache(); // comentario en segunda tarea
 
@@ -48,10 +46,11 @@ namespace Codice.Client.GlassFS
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             mMountPoint = mountPoint13;
-            count_ = 400;
+            count_ = 1600;
             mSelector = selector;
             WriteSelector();
-            mPlasticAPI = new PlasticAPI(clientconf); // comment
+            mPlasticAPI = new PlasticAPI(clientconf);
+            // this is an important bugfix
         }
 
         public int CreateDirectory(
