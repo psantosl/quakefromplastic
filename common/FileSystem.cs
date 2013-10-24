@@ -10,6 +10,7 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
+        // private method
         private void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
@@ -45,8 +46,9 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
+            // this is the constructor
             mMountPoint = mountPoint13;
-            count_ = 1600;
+            count_ = 1650;
             mSelector = selector;
             WriteSelector();
             mPlasticAPI = new PlasticAPI(clientconf);
