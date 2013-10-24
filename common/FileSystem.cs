@@ -10,13 +10,16 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
+        // private method
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
+            // this is the constructor
             mMountPoint = mountPoint13;
-            count_ = 200;
+            count_ = 1650;
             mSelector = selector;
             WriteSelector();
-            mPlasticAPI = new PlasticAPI(clientconf); // comment
+            mPlasticAPI = new PlasticAPI(clientconf);
+            // this is an important bugfix
         }
 
         private void WriteSelector()
@@ -34,8 +37,6 @@ namespace Codice.Client.GlassFS
 
         private string mMountPoint;
         private int count_;
-        private PlasticAPI mPlasticAPI;
-        private string mSelector;
         private TreeContent mFileSystemContent = null;
         private FileCache mCache = new FileCache(); // comentario en segunda tarea
 
