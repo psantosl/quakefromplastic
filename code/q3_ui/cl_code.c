@@ -49,36 +49,6 @@ void CL_GetGlconfig( glconfig_t *glconfig ) {
 	*glconfig = cls.glconfig;
 }
 
-
-/*
-====================
-CL_GetUserCmd
-====================
-*/
-qboolean CL_GetUserCmd( int cmdNumber, usercmd_t *ucmd ) {
-	// cmds[cmdNumber] is the last properly generated command
-
-	// can't return anything that we haven't created yet
-	if ( cmdNumber > cl.cmdNumber ) {
-		Com_Error( ERR_DROP, "CL_GetUserCmd: %i >= %i", cmdNumber, cl.cmdNumber );
-	}
-
-	// the usercmd has been overwritten in the wrapping
-	// buffer because it is too far out of date
-	if ( cmdNumber <= cl.cmdNumber - CMD_BACKUP ) {
-		return qfalse;
-	}
-
-	*ucmd = cl.cmds[ cmdNumber & CMD_MASK ];
-
-	return qtrue;
-}
-
-int CL_GetCurrentCmdNumber( void ) {
-	return cl.cmdNumber;
-}
-
-
 /*
 ====================
 CL_GetParseEntityState
@@ -1023,6 +993,35 @@ void CL_SetCGameTime( void ) {
 		}
 	}
 
+
+}
+
+/*
+====================
+CL_GetUserCmd
+====================
+*/
+qboolean CL_GetUserCmd( int cmdNumber, usercmd_t *ucmd ) {
+	// cmds[cmdNumber] is the last properly generated command
+
+	// can't return anything that we haven't created yet
+	if ( cmdNumber > cl.cmdNumber ) {
+		Com_Error( ERR_DROP, "CL_GetUserCmd: %i >= %i", cmdNumber, cl.cmdNumber );
+	}
+
+	// the usercmd has been overwritten in the wrapping
+	// buffer because it is too far out of date
+	if ( cmdNumber <= cl.cmdNumber - CMD_BACKUP ) {
+		return qfalse;
+	}
+
+	*ucmd = cl.cmds[ cmdNumber & CMD_MASK ];
+
+	return qtrue;
+}
+
+int CL_GetCurrentCmdNumber( void ) {
+	return cl.cmdNumber;
 }
 
 
