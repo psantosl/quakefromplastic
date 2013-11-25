@@ -45,6 +45,7 @@ extern "C"
 extern void LoadJPGBuff(unsigned char *fbuffer, unsigned char **pic, int *width, int *height );
 // rad end
 
+// MODIFIED ON THE BRANCH 4007 so we should have a conflict
 
 /*
  * First we include the configuration files that record how this
