@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 cvar_t *cl_shownet;
 
 void CL_Shutdown( void ) {
+	// ok, modify shutdown too
 	// modified on the renamed directory
 }
 
