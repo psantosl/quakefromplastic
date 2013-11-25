@@ -45,6 +45,7 @@ extern "C"
 extern void LoadJPGBuff(unsigned char *fbuffer, unsigned char **pic, int *width, int *height );
 // rad end
 
+// modification in jpeg.h
 
 /*
  * First we include the configuration files that record how this

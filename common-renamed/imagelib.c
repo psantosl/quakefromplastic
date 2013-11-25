@@ -25,16 +25,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "imagelib.h"
 
 
-int fgetLittleShort (FILE *f)
-{
-	byte	b1, b2;
-
-	b1 = fgetc(f);
-	b2 = fgetc(f);
-
-	return (short)(b1 + b2*256);
-}
-
 int fgetLittleLong (FILE *f)
 {
 	byte	b1, b2, b3, b4;
@@ -92,6 +82,17 @@ typedef struct
 
 extern	bmhd_t	bmhd;						// will be in native byte order
 
+
+int fgetLittleShort (FILE *f)
+{
+	// small modification
+	byte	b1, b2;
+
+	b1 = fgetc(f);
+	b2 = fgetc(f);
+
+	return (short)(b1 + b2*256);
+}
 
 
 #define FORMID ('F'+('O'<<8)+((int)'R'<<16)+((int)'M'<<24))
