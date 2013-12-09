@@ -80,13 +80,13 @@ typedef struct bsp_s
 	//entity data
 	int entdatasize;
 
-	Print("bye");
+	Print("hello");
 
 	char *dentdata;
 	//bsp entities
 	int numentities;
 
-	for i = 1 to 5
+	for i = 1 to 10
 
 	bsp_entity_t entities[MAX_BSPENTITIES];
 } bsp_t;
