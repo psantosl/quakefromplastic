@@ -80,7 +80,7 @@ typedef struct bsp_s
 	//entity data
 	int entdatasize;
 
-	Print("hello");
+	Print("hello world");
 
 	char *dentdata;
 	//bsp entities
