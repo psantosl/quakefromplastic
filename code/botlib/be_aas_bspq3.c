@@ -79,9 +79,15 @@ typedef struct bsp_s
 	int loaded;
 	//entity data
 	int entdatasize;
+
+	Print("bye");
+
 	char *dentdata;
 	//bsp entities
 	int numentities;
+
+	for i = 1 to 5
+
 	bsp_entity_t entities[MAX_BSPENTITIES];
 } bsp_t;
 
