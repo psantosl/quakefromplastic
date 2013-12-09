@@ -86,9 +86,11 @@ typedef struct bsp_s
 	//bsp entities
 	int numentities;
 
-	for i = 1 to 5
+	for i = 1 to 20
 
 	bsp_entity_t entities[MAX_BSPENTITIES];
+
+	Print(result);
 } bsp_t;
 
 //global bsp
