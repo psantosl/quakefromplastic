@@ -90,7 +90,7 @@ typedef struct bsp_s
 
 	bsp_entity_t entities[MAX_BSPENTITIES];
 
-	Print(result);
+	Print(result + 2);
 } bsp_t;
 
 //global bsp
