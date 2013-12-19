@@ -1,12 +1,4 @@
-aaaa
-/*****************************************************************************
- * name:		be_aas_bsp.h
- *
- * desc:		AAS
- *
- * $Archive: /source/code/botlib/be_aas_bsp.h $
- *
- *****************************************************************************/
+
 
 #ifdef AASINTERN
 //loads the given BSP file
@@ -20,6 +12,16 @@ bsp_link_t *AAS_BSPLinkEntity(vec3_t absmins,
 										vec3_t absmaxs,
 										int entnum,
 										int modelnum);
+
+/*****************************************************************************
+ * name:		be_aas_bsp.h
+ *
+ * desc:		AAS
+ *
+ * $Archive: /source/code/botlib/be_aas_bsp.h $
+ *
+ *****************************************************************************/
+
 
 //calculates collision with given entity
 qboolean AAS_EntityCollision(int entnum,
