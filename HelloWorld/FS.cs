@@ -59,6 +59,7 @@ namespace Codice.Client.GlassFS
 
             mSelectorBytes.Seek(0, SeekOrigin.Begin);
 
+            // This code is commented now
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
         }
     }
