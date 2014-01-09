@@ -20,6 +20,8 @@ namespace Codice.Client.GlassFS
             // modification on a different method
 
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
+
+            // modifiy the WriteSelector method on the original location
         }
 
         private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
