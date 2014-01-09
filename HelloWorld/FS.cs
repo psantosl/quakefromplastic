@@ -10,20 +10,6 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
-        // private method
-        private void WriteSelector()
-        {
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            mSelectorBytes.Seek(0, SeekOrigin.Begin);
-
-            // modification on a different method
-
-            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
-
-            // modifiy the WriteSelector method on the original location
-        }
-
         private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
 
         private string mMountPoint;
@@ -64,6 +50,19 @@ namespace Codice.Client.GlassFS
             /// modified - in demo to TCP
             log.DebugFormat("-- CreateDirectory {0}", filename); // this is a great change
             return -1;
+        }
+
+        // private method
+        private void WriteSelector()
+        {
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+
+            mSelectorBytes.Seek(0, SeekOrigin.Begin);
+
+            // This code is commented now
+            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
+
+            // modifiy the WriteSelector method on the original location
         }
     }
 }
