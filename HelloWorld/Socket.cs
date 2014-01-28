@@ -2,13 +2,12 @@ using System.Net;
 
 namespace Network
 {
-    internal class Socket
+    internal class ClientSocket
     {
-        internal string GetHostByName(string addr)
+
+        internal int Send(byte[] buffer)
         {
-            // this method returns the host
-            // when you give an IP
-            return CalculateHostByName(addr);
+            System.IO.Write(buffer);
         }
 
         internal void ConnectTo(string addr)
@@ -16,10 +15,15 @@ namespace Network
             // connect to a client
             Net.ConnectTo(addr);
         }
+    }
 
-        internal int Send(byte[] buffer)
+    internal class Socket
+    {
+        internal string GetHostByName(string addr)
         {
-            System.IO.Write(buffer);
+            // this method returns the host
+            // when you give an IP
+            return CalculateHostByName(addr);
         }
     }
 
