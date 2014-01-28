@@ -11,13 +11,6 @@ namespace Network
             return CalculateHostByName(addr);
         }
 
-        internal void Listen()
-        {
-            // do the listen on a port
-            // and whatever it is needed
-            // to listen
-        }
-
         internal void ConnectTo(string addr)
         {
             // connect to a client
@@ -28,10 +21,20 @@ namespace Network
         {
             System.IO.Write(buffer);
         }
+    }
 
+    internal class ServerSocket
+    {
         internal int Recv(byte[] buffer)
         {
             System.IO.Read(buffer);
+        }
+
+        internal void Listen()
+        {
+            // do the listen on a port
+            // and whatever it is needed
+            // to listen
         }
     }
 }
