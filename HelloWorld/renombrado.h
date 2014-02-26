@@ -29,7 +29,7 @@ qboolean AAS_EntityCollision(int entnum,
 										vec3_t end,
 										int contentmask,
 										bsp_trace_t *trace);
-//for debugging CAMBIO EN DEMO
+//for debugging - CAMBIO EN LA MISMA - CAMBIO EN LA DEMO
 void AAS_PrintFreeBSPLinks(char *str);
 //
 #endif //AASINTERN
@@ -43,7 +43,7 @@ int AAS_PointContents(vec3_t point);
 qboolean AAS_inPVS(vec3_t p1, vec3_t p2);
 //returns true when p2 is in the PHS of p1
 qboolean AAS_inPHS(vec3_t p1, vec3_t p2);
-//returns true if the given areas are connected
+//returns true if the given areas are connected - tercera modificaci?n
 qboolean AAS_AreasConnected(int area1, int area2);
 //creates a list with entities totally or partly within the given box
 
@@ -53,18 +53,4 @@ bsp_trace_t AAS_Trace(	vec3_t start,
 								vec3_t end,
 								int passent,
 								int contentmask);
-
-int AAS_BoxEntities(vec3_t absmins, vec3_t absmaxs, int *list, int maxcount);
-//gets the mins, maxs and origin of a BSP model
-void AAS_BSPModelMinsMaxsOrigin(int modelnum, vec3_t angles, vec3_t mins, vec3_t maxs, vec3_t origin);
-//handle to the next bsp entity
-int AAS_NextBSPEntity(int ent);
-//return the value of the BSP epair key
-int AAS_ValueForBSPEpairKey(int ent, char *key, char *value, int size);
-//get a vector for the BSP epair key
-int AAS_VectorForBSPEpairKey(int ent, char *key, vec3_t v);
-//get a float for the BSP epair key
-int AAS_FloatForBSPEpairKey(int ent, char *key, float *value);
-//get an integer for the BSP epair key
-int AAS_IntForBSPEpairKey(int ent, char *key, int *value);
 
