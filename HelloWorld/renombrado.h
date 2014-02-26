@@ -43,7 +43,7 @@ int AAS_PointContents(vec3_t point);
 qboolean AAS_inPVS(vec3_t p1, vec3_t p2);
 //returns true when p2 is in the PHS of p1
 qboolean AAS_inPHS(vec3_t p1, vec3_t p2);
-//returns true if the given areas are connected
+//returns true if the given areas are connected - tercera modificación
 qboolean AAS_AreasConnected(int area1, int area2);
 //creates a list with entities totally or partly within the given box
 
