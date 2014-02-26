@@ -29,7 +29,7 @@ qboolean AAS_EntityCollision(int entnum,
 										vec3_t end,
 										int contentmask,
 										bsp_trace_t *trace);
-//for debugging
+//for debugging - CAMBIO EN LA MISMA Línea en la segunda rama
 void AAS_PrintFreeBSPLinks(char *str);
 //
 #endif //AASINTERN
@@ -53,18 +53,4 @@ bsp_trace_t AAS_Trace(	vec3_t start,
 								vec3_t end,
 								int passent,
 								int contentmask);
-
-int AAS_BoxEntities(vec3_t absmins, vec3_t absmaxs, int *list, int maxcount);
-//gets the mins, maxs and origin of a BSP model
-void AAS_BSPModelMinsMaxsOrigin(int modelnum, vec3_t angles, vec3_t mins, vec3_t maxs, vec3_t origin);
-//handle to the next bsp entity
-int AAS_NextBSPEntity(int ent);
-//return the value of the BSP epair key
-int AAS_ValueForBSPEpairKey(int ent, char *key, char *value, int size);
-//get a vector for the BSP epair key
-int AAS_VectorForBSPEpairKey(int ent, char *key, vec3_t v);
-//get a float for the BSP epair key
-int AAS_FloatForBSPEpairKey(int ent, char *key, float *value);
-//get an integer for the BSP epair key
-int AAS_IntForBSPEpairKey(int ent, char *key, int *value);
 
