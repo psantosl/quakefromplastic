@@ -29,7 +29,7 @@ qboolean AAS_EntityCollision(int entnum,
 										vec3_t end,
 										int contentmask,
 										bsp_trace_t *trace);
-//for debugging
+//for debugging CAMBIO EN DEMO
 void AAS_PrintFreeBSPLinks(char *str);
 //
 #endif //AASINTERN
