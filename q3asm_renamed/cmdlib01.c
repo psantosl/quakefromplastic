@@ -11,10 +11,6 @@
 #include <windows.h>
 #endif
 
-/*****************************************************/
-/* THIS IS A BIIIIIIIIIIIIIIGGGGGGGGG COMMENT        */
-/*****************************************************/
-
 #ifdef __linux
 #include <unistd.h>
 #endif
