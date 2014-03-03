@@ -38,7 +38,7 @@ namespace Codice.Client.GlassFS
             mMountPoint = mountPoint13;
             count_ = 1650;
             mSelector = selector;
-            WriteSelector();
+            WriteSelector(clientconf);
             mPlasticAPI = new PlasticAPI(clientconf);
             // this is an important bugfix
         }
