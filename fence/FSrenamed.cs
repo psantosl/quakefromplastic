@@ -21,17 +21,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public int OpenDirectories(
-            string filename,
-            DokanFileInfo info)
-        {
-            log.DebugFormat("<-----> OpenDirectory {0} CAMBIADO EN SEGUNDA TAREA", filename);
-            info.Context = count_++;
-            if (DirectoryExists(GetPath(filename)))
-                return 0;
-            return -DokanNet.ERROR_PATH_NOT_FOUND;
-        }
-
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             mMountPoint = mountPoint13;
@@ -62,6 +51,17 @@ namespace Codice.Client.GlassFS
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
             // modifiy the WriteSelector method on the original location
+        }
+
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            log.DebugFormat("<-----> OpenDirectory {0} CAMBIADO EN SEGUNDA TAREA", filename);
+            info.Context = count_++;
+            if (DirectoryExists(GetPath(filename)))
+                return 0;
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
     }
 }
