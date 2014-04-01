@@ -44,7 +44,7 @@ char			archivedir[1024];
 
 /*
 ===================
-ExpandWildcards
+ExpandWildcaTs
 
 Mimic unix command line expansion
 ===================
