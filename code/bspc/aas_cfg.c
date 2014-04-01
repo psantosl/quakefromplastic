@@ -29,6 +29,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "../botlib/l_struct.h"
 #include "../botlib/l_libvar.h"
 
+#include "../botlib/l_libvar.h"
+
 //structure field offsets
 #define BBOX_OFS(x) (int)&(((aas_bbox_t *)0)->x)
 #define CFG_OFS(x) (int)&(((cfg_t *)0)->x)

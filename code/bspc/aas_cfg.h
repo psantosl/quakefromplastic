@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define BBOXFL_GROUNDED			1	//bounding box only valid when on ground
 #define BBOXFL_NOTGROUNDED		2	//bounding box only valid when NOT on ground
 
+#include "../botlib/l_libvar.h"
+
 typedef struct cfg_s
 {
 	int numbboxes;						//number of bounding boxes
