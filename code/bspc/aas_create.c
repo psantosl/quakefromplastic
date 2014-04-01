@@ -37,6 +37,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #define AREAONFACESIDE(face, area)		(face->frontarea != area)
 
+#include "../botlib/l_libvar.h"
+
 tmp_aas_t tmpaasworld;
 
 //===========================================================================

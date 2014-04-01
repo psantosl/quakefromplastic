@@ -19,5 +19,5 @@ along with Foobar; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
-
+#include "../botlib/l_libvar.h"
 void AAS_CalcReachAndClusters(struct quakefile_s *qf);

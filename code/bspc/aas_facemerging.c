@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include "qbsp.h"
 #include "../botlib/aasfile.h"
 #include "aas_create.h"
+#include "../botlib/l_libvar.h"
 
 //===========================================================================
 //
