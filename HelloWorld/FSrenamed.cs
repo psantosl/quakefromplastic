@@ -34,7 +34,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            /// modified - in demo to TCP
+            /// modified - in a demo for games
             log.DebugFormat("-- CreateDirectory {0}", filename); // this is a great change
             return -1;
         }
