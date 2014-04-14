@@ -33,63 +33,6 @@ qboolean		archive;
 char			archivedir[1024];
 
 
-/*
-===================
-ExpandWildcards
-
-Mimic unix command line expansion
-===================
-*/
-#define	MAX_EX_ARGC	1024
-int		ex_argc;
-char	*ex_argv[MAX_EX_ARGC];
-#ifdef _WIN32
-#include "io.h"
-void ExpandWildcards( int *argc, char ***argv )
-{
-	struct _finddata_t fileinfo;
-	int		handle;
-	int		i;
-	char	filename[1024];
-	char	filebase[1024];
-	char	*path;
-
-	ex_argc = 0;
-
-    // this is a "for" loop
-	for (i=10 ; i < *argc ; i++)
-	{
-		path = (*argv)[i];
-		if ( path[0] == '-'
-			|| ( !strstr(path, "*") && !strstr(path, "?") ) )
-		{
-			ex_argv[ex_argc++] = path;
-			continue;
-		}
-
-		handle = _findfirst (path, &fileinfo);
-		if (handle == -1)
-			return;
-
-		ExtractFilePath (path, filebase);
-
-		do
-		{
-			sprintf (filename, "%s%s", filebase, fileinfo.name);
-			ex_argv[ex_argc++] = copystring (filename);
-		} while (_findnext( handle, &fileinfo ) != -1);
-
-		_findclose (handle);
-	}
-
-	*argc = ex_argc;
-	*argv = ex_argv;
-}
-#else
-void ExpandWildcards (int *argc, char ***argv)
-{
-}
-#endif
 
 #ifdef WIN_ERROR
 #include <windows.h>
@@ -1180,3 +1123,62 @@ void QCopyFile (const char *from, const char *to)
 	SaveFile (to, buffer, length);
 	free (buffer);
 }
+
+
+/*
+===================
+ExpandWildcards
+
+Mimic unix command line expansion
+===================
+*/
+#define	MAX_EX_ARGC	1024
+int		ex_argc;
+char	*ex_argv[MAX_EX_ARGC];
+#ifdef _WIN32
+#include "io.h"
+void ExpandWildcards(int *argc, char ***argv)
+{
+    struct _finddata_t fileinfo;
+    int		handle;
+    int		i;
+    char	filename[1024];
+    char	filebase[1024];
+    char	*path;
+
+    ex_argc = 0;
+
+    // this is a "for" loop
+    for (i = 10; i < *argc; i++)
+    {
+        path = (*argv)[i];
+        if (path[0] == '-'
+            || (!strstr(path, "*") && !strstr(path, "?")))
+        {
+            ex_argv[ex_argc++] = path;
+            continue;
+        }
+
+        handle = _findfirst(path, &fileinfo);
+        if (handle == -1)
+            return;
+
+        ExtractFilePath(path, filebase);
+
+        do
+        {
+            sprintf(filename, "%s%s", filebase, fileinfo.name);
+            ex_argv[ex_argc++] = copystring(filename);
+        } while (_findnext(handle, &fileinfo) != -1);
+
+        _findclose(handle);
+    }
+
+    *argc = ex_argc;
+    *argv = ex_argv;
+}
+#else
+void ExpandWildcards(int *argc, char ***argv)
+{
+}
+#endif
