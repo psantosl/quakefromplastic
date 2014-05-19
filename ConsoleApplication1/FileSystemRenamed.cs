@@ -23,11 +23,13 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
+            // add a comment
             mMountPoint = mountPoint13;
             count_ = 1650;
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
+            // second comment
         }
 
         public int CreateDirectory(

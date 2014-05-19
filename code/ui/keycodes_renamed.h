@@ -16,8 +16,6 @@ typedef enum {
 
 	K_BACKSPACE = 127,
 
-	K_UPARROW,
-	K_DOWNARROW,
 	K_LEFTARROW,
 	K_RIGHTARROW,
 
