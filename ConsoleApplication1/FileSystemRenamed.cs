@@ -29,6 +29,7 @@ namespace Codice.Client.GlassFS
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
+            // second comment
         }
 
         public int CreateDirectory(
