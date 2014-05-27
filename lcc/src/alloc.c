@@ -10,6 +10,9 @@ union align {
 	double d;
 	int (*f)(void);
 };
+
+// another comment
+
 union header {
 	struct block b;
 	union align a;
