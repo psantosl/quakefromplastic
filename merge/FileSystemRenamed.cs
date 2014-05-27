@@ -23,6 +23,7 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
+            // thrid change
             // comment on a different branch
             // add a comment
             mMountPoint = mountPoint13;
@@ -42,7 +43,7 @@ namespace Codice.Client.GlassFS
             return -1;
         }
 
-        // private method
+        // private method that should be PUBLIC - during demo
         private void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
