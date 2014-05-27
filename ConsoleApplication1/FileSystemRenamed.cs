@@ -23,6 +23,7 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
+            // comment with wargaming
             // comment on a different branch
             // add a comment
             mMountPoint = mountPoint13;
