@@ -22,15 +22,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public int CreateDirectory(
-            string filename,
-            DokanFileInfo info)
-        {
-            /// modified - in a demo for games
-            log.DebugFormat("-- CreateDirectory {0}", filename); // this is a great change
-            return -1;
-        }
-
         // private method
         private void WriteSelector()
         {
@@ -43,6 +34,15 @@ namespace Codice.Client.GlassFS
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
             // modifiy the WriteSelector method on the original location
+        }
+
+        public int CreateDirectory(
+            string filename,
+            DokanFileInfo info)
+        {
+            /// moved and modified
+            log.DebugFormat("-- CreateDirectory {0}", filename); // this is a great change
+            return -1;
         }
 
         public int OpenDirectories(
