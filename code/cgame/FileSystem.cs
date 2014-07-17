@@ -10,6 +10,7 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
+        //
         private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
 
         private string mMountPoint;
