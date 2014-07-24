@@ -22,13 +22,13 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        // private method
         private void WriteSelector()
         {
+            // this is a bugfix
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             // seek from end
-            mSelectorBytes.Seek(20, SeekOrigin.End);
+            mSelectorBytes.Seek(30, SeekOrigin.End);
 
             // This code is commented now
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
