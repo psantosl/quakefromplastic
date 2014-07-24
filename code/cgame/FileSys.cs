@@ -28,10 +28,12 @@ namespace Codice.Client.GlassFS
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             // seek from end
-            mSelectorBytes.Seek(0, SeekOrigin.End);
+            mSelectorBytes.Seek(20, SeekOrigin.End);
 
             // This code is commented now
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
+
+            // comment added on task 90
 
             // modifiy the WriteSelector method on the original location
         }
