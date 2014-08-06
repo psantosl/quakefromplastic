@@ -43,7 +43,7 @@ namespace Codice.Client.GlassFS
             DokanFileInfo info)
         {
             log.DebugFormat(
-                "-- Create directory - {0}",
+                "-- Create directory:\n\tDirectory name: {0}",
                 filename);
 
             DirectoryCreator.Create(filename);
@@ -64,15 +64,11 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
-            // comment with wargaming
-            // comment on a different branch
-            // add a comment
             mMountPoint = mountPoint13;
             count_ = 1650;
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
-            // second comment
         }
     }
 }
