@@ -33,7 +33,7 @@ namespace Codice.Client.GlassFS
             // This code is commented now
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
-            mSelectorBytes.Write(null, 0, 0);
+            mSelectorBytes.Write(null, 0, 0); // modified
 
             // modifiy the WriteSelector method on the original location
         }

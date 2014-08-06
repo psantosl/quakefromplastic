@@ -17,7 +17,7 @@ namespace Network
             // and whatever it is needed
             // to listen
 
-            // nothing
+            // nothing else
         }
 
         internal void ConnectTo(string addr)
