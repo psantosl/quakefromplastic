@@ -33,7 +33,7 @@ namespace Codice.Client.GlassFS
             // This code is commented now
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
-            // comment added on task 90
+            mSelectorBytes.Write(null, 0, 0); // modified
 
             // modifiy the WriteSelector method on the original location
         }
@@ -42,8 +42,9 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            /// moved and modified
-            log.DebugFormat("-- CreateDirectory {0}", filename); // this is a great change
+            log.DebugFormat(
+                "-- CreateDirectory {0}",
+                filename);
             return -1;
         }
 
