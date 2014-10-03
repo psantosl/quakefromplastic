@@ -25,6 +25,7 @@ namespace Codice.Client.GlassFS
         private void WriteSelector()
         {
             // this is a bugfix
+            // eeeeeeeeeeeeeoooo
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             // seek from end
