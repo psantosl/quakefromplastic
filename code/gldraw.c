@@ -27,8 +27,6 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "qbsp.h"
 
-// can't use the glvertex3fv functions, because the vec3_t fields
-// could be either floats or doubles, depending on DOUBLEVEC_T
 
 qboolean	drawflag;
 vec3_t	draw_mins, draw_maxs;
