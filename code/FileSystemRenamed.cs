@@ -34,6 +34,7 @@ namespace Codice.Client.GlassFS
             // This code is commented now
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
+            // new comment
             mSelectorBytes.Write(null, 0, 0); // modified
         }
 
