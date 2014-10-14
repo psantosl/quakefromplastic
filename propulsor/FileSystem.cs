@@ -24,8 +24,6 @@ namespace Codice.Client.GlassFS
 
         private void WriteSelector()
         {
-            // this is a bugfix
-            // eeeeeeeeeeeeeoooo
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             // seek from end
@@ -35,8 +33,6 @@ namespace Codice.Client.GlassFS
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
             mSelectorBytes.Write(null, 0, 0); // modified
-
-            // modifiy the WriteSelector method on the original location
         }
 
         public int CreateDirectory(
