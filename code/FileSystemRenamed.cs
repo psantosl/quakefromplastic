@@ -24,6 +24,7 @@ namespace Codice.Client.GlassFS
 
         private void WriteSelector()
         {
+            // changed in scm0001
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             // change without previous checkin
