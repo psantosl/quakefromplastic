@@ -26,6 +26,8 @@ namespace Codice.Client.GlassFS
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
+            // change without previous checkin
+
             // seek from end
             mSelectorBytes.Seek(30, SeekOrigin.End);
 
