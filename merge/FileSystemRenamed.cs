@@ -22,23 +22,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        private void WriteSelector()
-        {
-            // changed in scm0001
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            // change without previous checkin
-
-            // seek from end
-            mSelectorBytes.Seek(30, SeekOrigin.End);
-
-            // This code is commented now
-            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
-
-            // new comment
-            mSelectorBytes.Write(null, 0, 0); // modified
-        }
-
         public int CreateDirectory(
             string filename,
             DokanFileInfo info)
@@ -70,6 +53,23 @@ namespace Codice.Client.GlassFS
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
+        }
+
+        private void WriteSelector()
+        {
+            // changed in scm0001
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+
+            // change without previous checkin
+
+            // seek from end
+            mSelectorBytes.Seek(30, SeekOrigin.End);
+
+            // This code is commented now
+            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
+
+            // new comment
+            mSelectorBytes.Write(null, 0, 0); // modified
         }
     }
 }
