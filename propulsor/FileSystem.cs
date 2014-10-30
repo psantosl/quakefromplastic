@@ -26,6 +26,8 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
+            // create directory method
+
             log.DebugFormat(
                 "-- Create directory:\n\tDirectory name: {0}",
                 filename);
@@ -39,7 +41,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("<-----> OpenDirectory {0} CAMBIADO EN SEGUNDA TAREA", filename);
+            log.DebugFormat("<-----> OpenDirectory {0} changed in delphi003 and then changed during the merge", filename);
             info.Context = count_++;
             if (DirectoryExists(GetPath(filename)))
                 return 0;
