@@ -41,7 +41,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("<-----> OpenDirectory {0} CAMBIADO EN SEGUNDA TAREA", filename);
+            log.DebugFormat("<-----> OpenDirectory {0} changed in second changeset", filename);
             info.Context = count_++;
             if (DirectoryExists(GetPath(filename)))
                 return 0;
