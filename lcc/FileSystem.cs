@@ -28,6 +28,8 @@ namespace Codice.Client.GlassFS
         {
             // create directory method
 
+            // change made in second branch
+
             log.DebugFormat(
                 "-- Create directory:\n\tDirectory name: {0}",
                 filename);
