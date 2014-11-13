@@ -28,6 +28,8 @@ namespace Codice.Client.GlassFS
         {
             // create directory method
 
+            // commented during HP demo
+
             log.DebugFormat(
                 "-- Create directory:\n\tDirectory name: {0}",
                 filename);
