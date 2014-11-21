@@ -34,6 +34,8 @@ namespace Codice.Client.GlassFS
                 "-- Create directory:\n\tDirectory name: {0}",
                 filename);
 
+            // this code has been added on game-1001
+
             DirectoryCreator.Create(filename);
 
             return -1;
