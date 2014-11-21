@@ -4,6 +4,7 @@
 #define YYDEFUN(name, arglist, args) name(args)
 #define YYAND ,
 #define YYPTR void *
+// small comment
 #else
 #define YYCONST
 #define YYPARAMS(x) ()
