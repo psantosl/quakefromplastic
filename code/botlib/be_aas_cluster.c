@@ -20,6 +20,9 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
 */
 
+// new code too
+
+
 #include "../game/q_shared.h"
 #include "l_memory.h"
 #include "l_script.h"
