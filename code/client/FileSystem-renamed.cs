@@ -22,17 +22,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public int OpenDirectories(
-            string filename,
-            DokanFileInfo info)
-        {
-            log.DebugFormat("<-----> OpenDirectory {0} changed in delphi003 and then changed during the merge", filename);
-            info.Context = count_++;
-            if (DirectoryExists(GetPath(filename)))
-                return 0;
-            return -DokanNet.ERROR_PATH_NOT_FOUND;
-        }
-
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             mMountPoint = mountPoint13;
@@ -74,5 +63,16 @@ namespace Codice.Client.GlassFS
             DirectoryCreator.Create(filename);
 
             return -1;
+        }
+
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            log.DebugFormat("<-----> OpenDirectory {0} on a second branch - manually edited during merge", filename);
+            info.Context = count_++;
+            if (DirectoryExists(GetPath(filename)))
+                return 0;
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
 }}
