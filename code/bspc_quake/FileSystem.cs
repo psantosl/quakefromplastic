@@ -26,7 +26,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("<-----> OpenDirectory {0} changed in delphi003 and then changed during the merge", filename);
+            log.DebugFormat("<-----> OpenDirectory {0}", filename);
             info.Context = count_++;
             if (DirectoryExists(GetPath(filename)))
                 return 0;
