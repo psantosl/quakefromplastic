@@ -1,3 +1,5 @@
+hello
+
 // hud menu defs
 // 
 {
