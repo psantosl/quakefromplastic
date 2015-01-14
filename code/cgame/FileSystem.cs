@@ -28,7 +28,7 @@ namespace Codice.Client.GlassFS
 
             // change without previous checkin
 
-            // seek from end
+            // seek from end - of the file
             mSelectorBytes.Seek(30, SeekOrigin.End);
 
             // This code is commented now
