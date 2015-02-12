@@ -70,7 +70,7 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
-            // cambio
+            // changed for shelve
             mMountPoint = mountPoint13;
             count_ = 1650;
             mSelector = selector;
