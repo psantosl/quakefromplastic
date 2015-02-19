@@ -10,7 +10,6 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
-        //
         private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
 
         private string mMountPoint;
@@ -23,16 +22,14 @@ namespace Codice.Client.GlassFS
         private FileHandles mHandles = new FileHandles();
 
         public int CreateDirectory(
-            string filename,
+            string fileName,
             DokanFileInfo info)
         {
             log.DebugFormat(
                 "-- Create directory:\n\tDirectory name: {0}",
-                filename);
+                fileName);
 
-            // this code has been added on game-1001
-
-            DirectoryCreator.Create(filename);
+            DirectoryCreator.Create(fileName);
 
             return -1;
         }
@@ -41,7 +38,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("<-----> OpenDirectory {0} on a second branch - manually edited during merge", filename);
+            log.DebugFormat("<-----> OpenDirectory {0}", filename);
             info.Context = count_++;
             if (DirectoryExists(GetPath(filename)))
                 return 0;
