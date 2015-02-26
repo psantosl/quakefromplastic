@@ -32,7 +32,7 @@ extern displayContextDef_t cgDC;
 
 // set in CG_ParseTeamInfo
 
-//static int sortedTeamPlayers[TEAM_MAXOVERLAY];
+static int sortedTeamPlayers[TEAM_MAXOVERLAY];
 //static int numSortedTeamPlayers;
 int drawTeamOverlayModificationCount = -1;
 

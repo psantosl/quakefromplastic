@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
 
 // cg_localents.c -- every frame, generate renderer commands for locally
-// processed entities, like smoke puffs, gibs, shells, etc.
+// processed entities, like smoke puffs, gibs, shells, etc
 
 #include "cg_local.h"
 

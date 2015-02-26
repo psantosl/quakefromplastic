@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 displayContextDef_t cgDC;
 #endif
 
-int forceModelModificationCount = -1;
+int forceModelModificationCount = -1; //
 
 void CG_Init( int serverMessageNum, int serverCommandSequence, int clientNum );
 void CG_Shutdown( void );
