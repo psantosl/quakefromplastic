@@ -75,6 +75,7 @@ namespace Dokan
 
         public Proxy(DokanOptions options, DokanOperations operations)
         {
+            Logger.Log("Proxy created");
             operations_ = operations;
             options_ = options;
             array_ = new ArrayList();
