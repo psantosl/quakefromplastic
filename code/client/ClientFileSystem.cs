@@ -52,26 +52,20 @@ namespace Codice.Client.GlassFS
             mMountPoint = mountPoint13;
             count_ = 1650;
             mSelector = selector;
-            WriteSelector(mountPoint);
+            WriteSelector(selector);
             mPlasticAPI = new PlasticAPI(clientconf);
         }
 
-        private void WriteSelector()
+        private void WriteSelector(string selector)
         {
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            // change without previous checkin
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(selector);
 
             // seek from end - of the file
             mSelectorBytes.Seek(30, SeekOrigin.End);
 
-            // This code is commented now
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
-            // changed during demo
-
-            // new comment
-            mSelectorBytes.Write(null, 0, 0); // modified
+            mSelectorBytes.Write(null, 0, 0);
         }
 
     }
