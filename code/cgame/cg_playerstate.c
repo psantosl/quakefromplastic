@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ==============
 CG_CheckAmmo
 
-If the ammo has gone low enough to generate the warning, play a sound
+If the ammo has gone low enough to generate the warning, play a sound a
 ==============
 */
 void CG_CheckAmmo( void ) {
