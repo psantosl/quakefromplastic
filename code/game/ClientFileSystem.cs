@@ -30,7 +30,7 @@ namespace Codice.Client.GlassFS
                 "-- Create directory:\n\tDirectory name: {0} - small change",
                 filename);
 
-            // this code has been added on game-1001
+            // Code added in Montreal
 
             DirectoryCreator.Create(filename);
 
