@@ -4,7 +4,7 @@
  * desc:		AAS
  *
  * $Archive: /source/code/botlib/be_aas_def.h $
- *
+ *a
  *****************************************************************************/
 
 //debugging on
