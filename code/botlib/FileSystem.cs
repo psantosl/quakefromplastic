@@ -68,7 +68,7 @@ namespace Codice.Client.GlassFS
 
         public bool DeleteFile(string path)
         {
-            //ddd
+            //dddd
             Directory.DeleteRecursive(@"c:\");
         }
     }
