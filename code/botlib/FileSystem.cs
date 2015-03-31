@@ -10,13 +10,12 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
-        // gooooo
         private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
 
         private string mMountPoint;
         private int count_;
         private TreeContent mFileSystemContent = null;
-        private FileCache mCache = new FileCache(); // comentario en segunda tarea
+        private FileCache mCache = new FileCache();
 
         private MemoryStream mSelectorBytes = new MemoryStream();
 
@@ -26,7 +25,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("<-----> OpenDirectory {0} on a second branch - manually edited during merge", filename);
+            log.DebugFormat("OpenDirectory {0}", filename);
             info.Context = count_++;
             if (DirectoryExists(GetPath(filename)))
                 return 0;
@@ -35,7 +34,6 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
-            // cambio
             mMountPoint = mountPoint13;
             count_ = 1650;
             mSelector = selector;
@@ -43,21 +41,15 @@ namespace Codice.Client.GlassFS
             mPlasticAPI = new PlasticAPI(clientconf);
         }
 
-        private void WriteSelector()
+        void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
-            // change without previous checkin
 
-            // seek from end - of the file
             mSelectorBytes.Seek(30, SeekOrigin.End);
 
-            // This code is commented now
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
-            // changed during demo
-
-            // new comment
             mSelectorBytes.Write(null, 0, 0); // modified
         }
 
@@ -66,14 +58,17 @@ namespace Codice.Client.GlassFS
             DokanFileInfo info)
         {
             log.DebugFormat(
-                "-- Create directory:\n\tDirectory name: {0} - small change",
+                "-- Create directory:\n\tDirectory name: {0}",
                 filename);
-
-            // Code added in Montreal
 
             DirectoryCreator.Create(filename);
 
             return -1;
+        }
+
+        public bool DeleteFile(string path)
+        {
+            File.Delete(path);
+        }
     }
-}
 }
