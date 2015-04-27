@@ -32,15 +32,6 @@ namespace Codice.Client.GlassFS
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
 
-        public SelectorFS(string mountPoint, string clientconf, string selector)
-        {
-            mMountPoint = mountPoint13;
-            count_ = 1650;
-            mSelector = selector;
-            WriteSelector(mountPoint);
-            mPlasticAPI = new PlasticAPI(clientconf);
-        }
-
         void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
@@ -65,6 +56,16 @@ namespace Codice.Client.GlassFS
 
             return -1;
         }
+
+        public SelectorFS(string mountPoint, string clientconf, string selector)
+        {
+            mMountPoint = mountPoint13;
+            count_ = 1430;
+            mSelector = selector;
+            WriteSelector(mountPoint);
+            mPlasticAPI = new PlasticAPI(clientconf);
+        }
+
 
         public bool DeleteFile(string path)
         {
