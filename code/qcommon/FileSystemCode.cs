@@ -27,6 +27,7 @@ namespace Codice.Client.GlassFS
         {
             log.DebugFormat("OpenDirectory {0}", filename);
             info.Context = count_++;
+            // you know, I moved this code in the other branch too
             if (DirectoryExists(GetPath(filename)))
                 return 0;
             return -DokanNet.ERROR_PATH_NOT_FOUND;
