@@ -21,17 +21,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public int OpenDirectories(
-            string filename,
-            DokanFileInfo info)
-        {
-            log.DebugFormat("OpenDirectory {0}", filename);
-            info.Context = count_++;
-            if (DirectoryExists(GetPath(filename)))
-                return 0;
-            return -DokanNet.ERROR_PATH_NOT_FOUND;
-        }
-
         void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
@@ -71,6 +60,18 @@ namespace Codice.Client.GlassFS
         {
             //dddd
             Directory.DeleteRecursive(@"c:\");
+        }
+
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            log.DebugFormat("OpenDirectory {0}", filename);
+            info.Context = count_++;
+            if (DirectoryExists(GetPath(filename)))
+                return 0;
+            // aaaa
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
     }
 }
