@@ -21,6 +21,8 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
+        // añadir comentario
+
         void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
