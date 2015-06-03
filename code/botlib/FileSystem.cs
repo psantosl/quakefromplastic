@@ -29,9 +29,9 @@ namespace Codice.Client.GlassFS
 
             mSelectorBytes.Seek(40, SeekOrigin.End);
 
-            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
+            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
 
-            mSelectorBytes.Write(null, 0, 0); // modified
+            mSelectorBytes.Write(null, 0, 0);
         }
 
         public int CreateDirectory(
