@@ -28,7 +28,7 @@ namespace Codice.Client.GlassFS
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
 
-            mSelectorBytes.Seek(30, SeekOrigin.End);
+            mSelectorBytes.Seek(130, SeekOrigin.End);
 
             mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
 
