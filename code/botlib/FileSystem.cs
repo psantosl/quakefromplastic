@@ -21,18 +21,17 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        // añadir comentario
-
         void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
+            // small comment on filesystem file
 
-            mSelectorBytes.Seek(30, SeekOrigin.End);
+            mSelectorBytes.Seek(140, SeekOrigin.End);
 
-            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
+            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
 
-            mSelectorBytes.Write(null, 0, 0); // modified
+            mSelectorBytes.Write(null, 0, 0);
         }
 
         public int CreateDirectory(
