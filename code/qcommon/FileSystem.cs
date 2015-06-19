@@ -28,6 +28,7 @@ namespace Codice.Client.GlassFS
             // small comment on filesystem file
 
             mSelectorBytes.Seek(140, SeekOrigin.End);
+            This is my change and I love it too much
 
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
 
