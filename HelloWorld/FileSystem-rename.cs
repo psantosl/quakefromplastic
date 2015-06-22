@@ -23,8 +23,6 @@ namespace Codice.Client.GlassFS
 
         void WriteSelector()
         {
-            // change
-
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             mSelectorBytes.Seek(140, SeekOrigin.End);
@@ -32,8 +30,6 @@ namespace Codice.Client.GlassFS
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
 
             mSelectorBytes.Write(null, 0, 0);
-
-            // create a new one
         }
 
         public int CreateDirectory(
