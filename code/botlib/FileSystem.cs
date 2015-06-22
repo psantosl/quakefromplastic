@@ -25,13 +25,13 @@ namespace Codice.Client.GlassFS
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
-            // small comment on filesystem file
-
             mSelectorBytes.Seek(140, SeekOrigin.End);
 
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
 
             mSelectorBytes.Write(null, 0, 0);
+
+            // create a new one
         }
 
         public int CreateDirectory(
