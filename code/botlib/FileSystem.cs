@@ -21,21 +21,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        void WriteSelector()
-        {
-            // change
-
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            mSelectorBytes.Seek(140, SeekOrigin.End);
-
-            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
-
-            mSelectorBytes.Write(null, 0, 0);
-
-            // create a new one
-        }
-
         public int CreateDirectory(
             string filename,
             DokanFileInfo info)
@@ -77,5 +62,18 @@ namespace Codice.Client.GlassFS
             // aaaa
             return -DokanNet.ERROR_PATH_NOT_FOUND;
     }
+
+        void WriteSelector()
+        {
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+
+            mSelectorBytes.Seek(255, SeekOrigin.End);
+
+            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
+
+            mSelectorBytes.Write(null, 0, 0);
+
+            // create a new one
+        }
 }
 }
