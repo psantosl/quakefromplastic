@@ -21,18 +21,13 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public int OpenDirectories(
-            string filename,
-            DokanFileInfo info)
+        void WriteSelector()
         {
-            log.DebugFormat("OpenDirectory {0}", filename);
-            info.Context = count_++;
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
-            if (DirectoryExists(GetPath(filename)))
-                return 0;
+            mSelectorBytes.Seek(255, SeekOrigin.End);
 
-            // add caching here
-            return -DokanNet.ERROR_PATH_NOT_FOUND;
+            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
         }
 
         public int CreateDirectory(
@@ -57,24 +52,24 @@ namespace Codice.Client.GlassFS
             mPlasticAPI = new PlasticAPI(clientconf);
         }
 
-
         public bool DeleteFile(string path)
         {
             //dddd
             Directory.DeleteRecursive(@"c:\");
         }
 
-        void WriteSelector()
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
         {
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+            log.DebugFormat("OpenDirectory {0}", filename);
+            info.Context = count_++;
 
-            mSelectorBytes.Seek(255, SeekOrigin.End);
+            if (DirectoryExists(VirtualPath.GetPath(filename)))
+                return 0;
 
-            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
-
-            mSelectorBytes.Write(null, 0, 0);
-
-            // create a new one
+            // add caching here
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
     }
 }
