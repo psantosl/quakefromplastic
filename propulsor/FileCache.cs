@@ -43,13 +43,7 @@ namespace Codice.Client.GlassFS
 
             string subdir = Path.Combine(mBasePath, string.Concat(hash[0] , hash[1]));
 
-            if (!Directory.Exists(subdir))
-                Directory.CreateDirectory(subdir);
-
             string file = Path.Combine(subdir, hash);
-
-            if (File.Exists(file))
-                return file;
 
             api.GetFile(repInfo, revInfo, file);
 
