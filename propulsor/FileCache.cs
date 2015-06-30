@@ -1,7 +1,4 @@
 using System;
-using System.Reflection;
-using System.IO;
-using System.Text;
 
 using Codice.Client.Common;
 using Codice.Client.Commands;
@@ -23,20 +20,6 @@ namespace Codice.Client.GlassFS
                 Directory.CreateDirectory(mBasePath);
         }
 
-        public string HashToHex(string hash)
-        {
-            StringBuilder hexString = new StringBuilder(hash.Length);
-
-            for (int i = 0; i < hash.Length; i++)
-            {
-                char c = (char)hash[i];
-                byte b = (byte) c;
-                hexString.Append(b.ToString("X2"));
-            }
-
-            return hexString.ToString();
-        }
-
         internal string GetFile(RepositoryInfo repInfo, RevisionInfo revInfo, PlasticAPI api)
         {
             string hash = HashToHex(revInfo.Hash);
@@ -54,6 +37,19 @@ namespace Codice.Client.GlassFS
             api.GetFile(repInfo, revInfo, file);
 
             return file;
+        }
+    }
+    internal class Hasher
+    {
+        internal string HashToHex(string hash)
+        {
+            StringBuilder hexString = new StringBuilder(hash.Length);
+            for (int i = 0; i < hash.Length; i++)
+            {
+                // modified by first user
+                hexString.Append(((byte)(char)hash[i]).ToString("X2"));
+            }
+            return hexString.ToString();
         }
     }
 }
