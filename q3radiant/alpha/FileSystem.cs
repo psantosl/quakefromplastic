@@ -51,17 +51,17 @@ namespace Codice.Client.GlassFS
         }
 
         public int CreateDirectory(
-            string filename,
+            string dirname,
             DokanFileInfo info)
         {
             log.DebugFormat(
                 "-- Create directory:\n\tDirectory name: {0}",
-                filename);
+                dirname);
 
-            if (Directory.Exists(filename))
+            if (Directory.Exists(dirname))
                 return -1;
 
-            DirectoryCreator.Create(filename);
+            DirectoryCreator.Create(dirname);
 
             return 0;
         }
