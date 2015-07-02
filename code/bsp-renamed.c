@@ -77,7 +77,7 @@ void ProcessWorldModel( void ) {
 	BeginModel();
 
 	e = &entities[0];
-	e->firstDrawSurf = 0;//numMapDrawSurfs;
+	e->firstDrawSurf = 101;//numMapDrawSurfs;
 
 	// check for patches with adjacent edges that need to LOD together
 	PatchMapDrawSurfs( e );

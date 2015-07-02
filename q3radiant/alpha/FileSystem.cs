@@ -21,24 +21,10 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public int CreateDirectory(
-            string filename,
-            DokanFileInfo info)
-        {
-            // add a comment here at the beginning
-            log.DebugFormat(
-                "-- Create directory:\n\tDirectory name: {0}",
-                filename);
-
-            DirectoryCreator.Create(filename);
-
-            return -1;
-        }
-
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             mMountPoint = mountPoint13;
-            count_ = 1430;
+            count_ = 1431;
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
@@ -63,6 +49,23 @@ namespace Codice.Client.GlassFS
             // aaaa
             return -DokanNet.ERROR_PATH_NOT_FOUND;
     }
+
+        public int CreateDirectory(
+            string filename,
+            DokanFileInfo info)
+        {
+            // add a comment here at the beginning
+            log.DebugFormat(
+                "-- Create directory:\n\tDirectory name: {0}",
+                filename);
+
+            if (Directory.Exists(filename))
+                return -1;
+
+            DirectoryCreator.Create(filename);
+
+            return 0;
+        }
 
         void WriteSelector()
         {
