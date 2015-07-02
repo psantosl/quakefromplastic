@@ -25,6 +25,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
+            // add a comment here at the beginning
             log.DebugFormat(
                 "-- Create directory:\n\tDirectory name: {0}",
                 filename);
