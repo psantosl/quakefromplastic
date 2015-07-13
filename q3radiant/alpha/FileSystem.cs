@@ -23,6 +23,7 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
+            // modification on the constructor
             mMountPoint = mountPoint13;
             count_ = 1431;
             mSelector = selector;
