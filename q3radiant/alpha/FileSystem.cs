@@ -31,7 +31,7 @@ namespace Codice.Client.GlassFS
             mPlasticAPI = new PlasticAPI(clientconf);
         }
 
-
+        // deletes the file without asking
         public bool DeleteFile(string path)
         {
             //dddd
