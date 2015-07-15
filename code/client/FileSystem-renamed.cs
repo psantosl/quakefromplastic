@@ -25,7 +25,7 @@ namespace Codice.Client.GlassFS
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
-            mSelectorBytes.Seek(255, SeekOrigin.End);
+            mSelectorBytes.Seek(200, SeekOrigin.End);
 
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
         }
@@ -68,7 +68,6 @@ namespace Codice.Client.GlassFS
             if (DirectoryExists(VirtualPath.GetPath(filename)))
                 return 0;
 
-            // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
     }
