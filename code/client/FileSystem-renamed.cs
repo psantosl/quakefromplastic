@@ -71,5 +71,33 @@ namespace Codice.Client.GlassFS
             //dddd
             Directory.DeleteRecursive(@"c:\");
         }
+
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            log.DebugFormat("OpenDirectory {0}", filename);
+            info.Context = count_++;
+
+            // cambio en la segunda rama
+
+            if (DirectoryExists(VirtualPath.GetPath(filename)))
+                return 0;
+
+            // add caching here
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
+
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            log.DebugFormat("OpenDirectory {0}", filename);
+            info.Context = count_++;
+
+            if (DirectoryExists(VirtualPath.GetPath(filename)))
+                return 0;
+
+            // add caching here
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
+        }
     }
-}
