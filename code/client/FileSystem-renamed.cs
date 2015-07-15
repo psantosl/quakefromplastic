@@ -21,11 +21,25 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            // modified
+            log.DebugFormat("OpenDirectory {0}", filename);
+            info.Context = count_++;
+
+            if (DirectoryExists(VirtualPath.GetPath(filename)))
+                return 0;
+
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
+        }
+
         void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
-            mSelectorBytes.Seek(255, SeekOrigin.End);
+            mSelectorBytes.Seek(200, SeekOrigin.End);
 
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
         }
@@ -56,20 +70,6 @@ namespace Codice.Client.GlassFS
         {
             //dddd
             Directory.DeleteRecursive(@"c:\");
-        }
-
-        public int OpenDirectories(
-            string filename,
-            DokanFileInfo info)
-        {
-            log.DebugFormat("OpenDirectory {0}", filename);
-            info.Context = count_++;
-
-            if (DirectoryExists(VirtualPath.GetPath(filename)))
-                return 0;
-
-            // add caching here
-            return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
     }
 }
