@@ -1,3 +1,4 @@
+
 .sdata
 .globl x
 .align 2
