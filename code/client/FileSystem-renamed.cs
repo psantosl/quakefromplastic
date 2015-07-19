@@ -29,6 +29,9 @@ namespace Codice.Client.GlassFS
             log.DebugFormat("OpenDirectory {0}", filename);
             info.Context = count_++;
 
+
+//// chaaaaaaaaangde
+
             if (DirectoryExists(VirtualPath.GetPath(filename)))
                 return 0;
 
