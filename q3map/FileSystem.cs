@@ -28,6 +28,7 @@ namespace Codice.Client.GlassFS
             log.DebugFormat("OpenDirectory {0}", filename);
             info.Context = count_++;
 
+            // second change on the code
 
 //// chaaaaaaaaangde
 
@@ -103,3 +104,4 @@ namespace Codice.Client.GlassFS
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
     }
+}
