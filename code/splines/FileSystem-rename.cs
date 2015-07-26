@@ -21,15 +21,9 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        void WriteSelector()
-        {
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            mSelectorBytes.Seek(200, SeekOrigin.End);
-
-            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
-        }
-
+        // 
+        // Responds to filesystem request to create a directory
+        // 
         public int CreateDirectory(
             string filename,
             DokanFileInfo info)
@@ -41,6 +35,15 @@ namespace Codice.Client.GlassFS
             DirectoryCreator.Create(filename);
 
             return -1;
+        }
+
+        void WriteSelector()
+        {
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+
+            mSelectorBytes.Seek(200, SeekOrigin.End);
+
+            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
         }
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
