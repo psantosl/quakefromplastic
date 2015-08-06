@@ -38,14 +38,17 @@ namespace Network
             mSocket.Connect(host, port);
         }
 
-        internal int Send(byte[] buffer)
-        {
-            return mSocket.Send(buffer);
-        }
-
         internal int Recv(byte[] buffer)
         {
             return mSocket.Receive(buffer);
+        }
+
+        internal int Send(byte[] buffer)
+        {
+            if (buffer == null)
+                return -1;
+
+            return mSocket.Send(buffer);
         }
 
         Socket(System.Net.Sockets.Socket sock)
