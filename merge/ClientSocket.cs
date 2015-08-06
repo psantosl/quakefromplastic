@@ -2,7 +2,7 @@ using System.Net;
 
 namespace Network
 {
-    internal class DNS
+    internal class ClientSocket
     {
         internal string GetHostByName(string addr)
         {
