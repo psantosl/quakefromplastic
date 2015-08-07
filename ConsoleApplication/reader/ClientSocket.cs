@@ -7,7 +7,7 @@ namespace Network
     {
         internal void ConnectTo(string host, int port)
         {
-            mSocket = new Socket(
+            mSocket = new System.Net.Sockets.Socket(
                 SocketType.Stream, ProtocolType.Tcp);
 
             // connect to a client
@@ -22,6 +22,6 @@ namespace Network
             return mSocket.Send(buffer);
         }
 
-        Socket mSocket;
+        System.Net.Sockets.Socket mSocket;
     }
 }
