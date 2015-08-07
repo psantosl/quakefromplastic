@@ -9,7 +9,7 @@ namespace Network
         {
             // do the listen on a port
             if (mSocket == null)
-                mSocket = new Socket(
+                mSocket = new System.Net.Sockets.Socket(
                     SocketType.Stream, ProtocolType.Tcp);
 
             mSocket.Listen(port);
@@ -19,7 +19,6 @@ namespace Network
         {
             return new ServerSocket(mSocket.Accept());
         }
-
 
         internal int Recv(byte[] buffer)
         {
