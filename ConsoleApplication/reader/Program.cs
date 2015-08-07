@@ -10,18 +10,20 @@ namespace Network
     {
         static void Main(string[] args)
         {
-            ClientSocket s = new ClientSocket();
+            ServerSocket s = new ServerSocket();
 
-            s.SocketServer.Listen(8080);
-            s.SocketServer.Accept();
+            s.Listen(8080);
+            s.Accept();
 
-            s.Send(null);
+            ClientSocket c = new ClientSocket();
 
-            s.SocketServer.Recv(null);
+            c.Send(null);
 
-            s.Dns.GetHostByName("www.plasticscm.com");
+            s.Recv(null);
 
-            s.ConnectTo("plasticscm.com", 8008);
+            DNS.GetHostByName("www.plasticscm.com");
+
+            c.ConnectTo("plasticscm.com", 8008);
         }
     }
 }

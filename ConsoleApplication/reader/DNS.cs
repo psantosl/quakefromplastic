@@ -4,13 +4,9 @@ namespace Network
 {
     internal class DNS
     {
-        public DNS()
+        internal static string GetHostByName(string addr)
         {
-        }
-
-        internal string GetHostByName(string addr)
-        {
-            IPHostEntry hostInfo = GetHostByName(addr);
+            IPHostEntry hostInfo = Dns.GetHostByName(addr);
             // Get the IP address list that resolves to the host names contained in the
             // Alias property.
             IPAddress[] address = hostInfo.AddressList;

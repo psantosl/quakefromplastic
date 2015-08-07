@@ -7,6 +7,9 @@ namespace Network
     {
         internal void ConnectTo(string host, int port)
         {
+            mSocket = new Socket(
+                SocketType.Stream, ProtocolType.Tcp);
+
             // connect to a client
             mSocket.Connect(host, port);
         }
@@ -17,15 +20,6 @@ namespace Network
                 return -1;
 
             return mSocket.Send(buffer);
-        }
-
-        ClientSocket(System.Net.Sockets.Socket sock)
-        {
-            mSocket = sock;
-        }
-
-        public ClientSocket()
-        {
         }
 
         Socket mSocket;
