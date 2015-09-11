@@ -22,21 +22,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public int CreateDirectory(
-            string filename,
-            DokanFileInfo info)
-        {
-            // create directory method
-
-            log.DebugFormat(
-                "-- Create directory:\n\tDirectory name: {0}",
-                filename);
-
-            DirectoryCreator.Create(filename);
-
-            return -1;
-        }
-
         public int OpenDirectories(
             string filename,
             DokanFileInfo info)
@@ -57,6 +42,23 @@ namespace Codice.Client.GlassFS
             mPlasticAPI = new PlasticAPI(clientconf);
         }
 
+		public int CreateDirectory(
+			string filename,
+			DokanFileInfo info)
+		{
+			// create directory method
+
+			// moved down
+
+			log.DebugFormat(
+				"-- Create directory:\n\tDirectory name: {0}",
+				filename);
+
+			DirectoryCreator.Create(filename);
+
+			return -1;
+		}
+
         private void WriteSelector()
         {
             // changed in scm0001
@@ -74,5 +76,6 @@ namespace Codice.Client.GlassFS
 
             // new comment
             mSelectorBytes.Write(null, 0, 0); // modified
-    }
-}}
+    	}			
+	}
+}
