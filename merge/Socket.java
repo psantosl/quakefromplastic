@@ -6,10 +6,13 @@ class Socket {
     
     java.net.Socket socket;
     
-    String getHostByName(String addr) {
-        // this method returns a host
-        // when you give an IP address
-        return calculateHostByName(addr);
+    int send(byte[] buffer) {
+        try {
+            OutputStream outStream = socket.getOutputStream();
+            outStream.write(buffer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     void listen() {
@@ -21,13 +24,13 @@ class Socket {
         // connect to a client
         socket = new java.net.Socket(addr, port);
     }
+
+    class Dns {
     
-    int send(byte[] buffer) {
-        try {
-            OutputStream out = socket.getOutputStream();
-            out.write(buffer);
-        } catch (Exception e) {
-            e.printStackTrace();
+        String getHostByName(String address) {
+            // this method returns a host
+            // when you give an IP address
+            return calculateHostByName(address);
         }
     }
     
