@@ -23,7 +23,7 @@ namespace Codice.Client.GlassFS
 
         // 
         // Responds to filesystem request to create a directory
-        // 
+        // added comment
         public int CreateDirectory(
             string fileName,
             DokanFileInfo info)
