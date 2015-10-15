@@ -91,16 +91,18 @@ namespace Codice.Client.GlassFS
 
         // 
         // Responds to filesystem request to create a directory
-        // 
+        // added comment
         public int CreateDirectory(
-            string filename,
+            string fileName,
             DokanFileInfo info)
         {
             log.DebugFormat(
                 "-- New dir:\n\tDirectory name: {0}",
-                filename);
+                fileName);
 
-            return DirectoryCreator.Create(filename);
+            DirectoryCreator.Create(fileName);
+
+            return 0;
         }
     }
 }
