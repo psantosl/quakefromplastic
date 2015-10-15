@@ -41,8 +41,8 @@ namespace Codice.Client.GlassFS
 
         public bool DeleteFile(string path)
         {
-            //dddd
-            Directory.DeleteRecursive(@"c:\");
+            // change to show the detailed diff in plastic
+            Directory.DeleteRecursive(@"f:\");
         }
 
         public int OpenDirectories(
