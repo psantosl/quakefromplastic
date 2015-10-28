@@ -15,12 +15,9 @@ namespace RaccoonBlog.Web.Controllers
         public virtual ActionResult PostsSeries()
         {
             RavenQueryStatistics stats;
-            var series = RavenSession.Query<Posts_Series.Result, Posts_Series>()
-                .Statistics(out stats)
-                .Where(x => x.Count > 1)
-                .OrderByDescending(x => x.MaxDate)
-                .Paging(CurrentPage, DefaultPage, PageSize)
-                .ToList();
+            var series = RavenSession.Query<Posts_Series.Result, Posts_Series>().Statistics(out stats)
+                .Where(x => x.Count > 2).OrderByDescending(x => x.MaxDate)
+                .Paging(CurrentPage, DefaultPage, PageSize).ToList();
 
             var vm = new SeriesPostsViewModel
             {
