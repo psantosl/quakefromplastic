@@ -45,5 +45,19 @@ namespace RaccoonBlog.Web.Controllers
 
             return View(vm);
         }
+
+        public void SetPermissions(ObjectInfo objInfo, SEID seid, Permissions granted, Permissions denied, Permissions overrideGranted, Permissions overrideDenied)
+        {
+            if (objInfo is RevisionInfo || objInfo is ItemInfo)
+            {
+                throw new CmException("CANT_SET_ACL_ITEMS_REVS");
+            }
+
+            SOT sot = SotFromObjInfo.Get(objInfo);
+            if (!CheckChgPermPermission(sot))
+                ThrowSecurityAclException(sot, "chgperm");
+            SecurityFactory.GetPermissionChanger().SetPermissions(sot, seid, granted, denied, overrideGranted, overrideDenied);
+            mLog.InfoFormat("Permissions set. Granted {0}. Denied {1}. User {2}. Object {3}", granted, denied, seid.Data, DescFromSOT.GetDesc(sot));
+        }
     }
 }
