@@ -32,6 +32,9 @@ namespace Codice.Client.GlassFS
                 "-- Create directory:\n\tDirectory name: {0}",
                 fileName);
 
+            // modified on Linux
+
+            // second change on Linux
             DirectoryCreator.Create(fileName);
 
             return 0;
@@ -41,7 +44,7 @@ namespace Codice.Client.GlassFS
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
-            mSelectorBytes.Seek(200, SeekOrigin.End);
+            mSelectorBytes.Seek(3200, SeekOrigin.End);
 
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
         }
