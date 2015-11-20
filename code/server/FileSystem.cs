@@ -32,6 +32,8 @@ namespace Codice.Client.GlassFS
                 "-- Create directory:\n\tDirectory name: {0}",
                 fileName);
 
+            // modified on Linux
+
             DirectoryCreator.Create(fileName);
 
             return 0;
