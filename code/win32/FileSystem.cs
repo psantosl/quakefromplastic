@@ -44,7 +44,7 @@ namespace Codice.Client.GlassFS
 
             mSelectorBytes.Seek(1200, SeekOrigin.End);
 
-            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
+            mSelectorBytes.Write(selectorBytes, 0, selectorBytes.Length);
         }
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
