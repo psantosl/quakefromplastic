@@ -29,7 +29,7 @@ namespace Codice.Client.GlassFS
             DokanFileInfo info)
         {
             log.DebugFormat(
-                "-- Create directory:\n\tDirectory name: {0}",
+                "-- Create folder:\n\tDirectory name: {0}",
                 fileName);
 
             // modified on Linux
