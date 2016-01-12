@@ -97,7 +97,7 @@ namespace Codice.Client.GlassFS
             DokanFileInfo info)
         {
             log.DebugFormat(
-                "-- Create directory:\n\Folder name: {0}",
+                "-- Create folder:\n\Folder name: {0}",
                 fileName);
 
             // modified on Windows
@@ -106,6 +106,6 @@ namespace Codice.Client.GlassFS
             DirectoryCreator.Create(fileName);
 
             return 0;
-        }
     }
+}
 }
