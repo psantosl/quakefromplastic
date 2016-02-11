@@ -30,21 +30,6 @@ namespace Codice.Client.GlassFS
             mPlasticAPI = new PlasticAPI(clientconf);
         }
 
-        // Responds to filesystem request
-        // to create a directory
-        public int CreateDirectory(
-            string fileName,
-            DokanFileInfo info)
-        {
-            log.DebugFormat(
-                "-- Create directory:\n\Directory name: {0}",
-                fileName);
-
-            DirectoryCreator.Create(fileName);
-
-            return 0;
-        }
-
         void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
@@ -71,6 +56,21 @@ namespace Codice.Client.GlassFS
 
             // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
+        }
+
+        // Responds to filesystem request
+        // to create a directory
+        public int CreateDirectory(
+            string fileName,
+            DokanFileInfo info)
+        {
+            log.DebugFormat(
+                "-- Create directory:\n\Folder name: {0}",
+                fileName);
+
+            DirectoryCreator.Create(fileName);
+
+            return 0;
         }
 
         public int OpenDirectories(
