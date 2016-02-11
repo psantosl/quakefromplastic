@@ -57,7 +57,6 @@ namespace Codice.Client.GlassFS
             // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
-
         // Responds to filesystem request
         // to create a directory
         public int CreateDirectory(
@@ -65,7 +64,7 @@ namespace Codice.Client.GlassFS
             DokanFileInfo info)
         {
             log.DebugFormat(
-                "-- Create directory:\n\Folder name: {0}",
+                "-- Create folder:\n\Folder name: {0}",
                 fileName);
 
             DirectoryCreator.Create(fileName);
