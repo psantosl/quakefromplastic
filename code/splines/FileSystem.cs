@@ -10,6 +10,21 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
+        // Responds to filesystem request
+        // to create a directory
+        public int CreateDirectory(
+            string fileName,
+            DokanFileInfo info)
+        {
+            log.DebugFormat(
+                "-- Create folder:\n\Directory name: {0}",
+                fileName);
+
+            DirectoryCreator.Create(fileName);
+
+            return 0;
+        }
+
         private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
 
         private string mMountPoint;
@@ -28,21 +43,6 @@ namespace Codice.Client.GlassFS
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
-        }
-
-        // Responds to filesystem request
-        // to create a directory
-        public int CreateDirectory(
-            string fileName,
-            DokanFileInfo info)
-        {
-            log.DebugFormat(
-                "-- Create directory:\n\Directory name: {0}",
-                fileName);
-
-            DirectoryCreator.Create(fileName);
-
-            return 0;
         }
 
         void WriteSelector()
