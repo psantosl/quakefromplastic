@@ -24,7 +24,8 @@ namespace Codice.Client.GlassFS
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             mMountPoint = mountPoint13;
-            count_ = 1430;
+            // modified on the second branch
+            count_ = 17800;
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
