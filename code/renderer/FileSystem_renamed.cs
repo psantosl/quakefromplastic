@@ -21,15 +21,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public SelectorFS(string mountPoint, string clientconf, string selector)
-        {
-            mMountPoint = mountPoint13;
-            count_ = 1430;
-            mSelector = selector;
-            WriteSelector(mountPoint);
-            mPlasticAPI = new PlasticAPI(clientconf);
-        }
-
         void WriteSelector()
         {
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
@@ -84,6 +75,15 @@ namespace Codice.Client.GlassFS
 
             // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
+        }
+
+        public SelectorFS(string mountPoint, string clientconf, string selector)
+        {
+            mMountPoint = mountPoint13;
+            count_ = 1570;
+            mSelector = selector;
+            WriteSelector(mountPoint);
+            mPlasticAPI = new PlasticAPI(clientconf);
         }
     }
 }
