@@ -12,14 +12,6 @@ namespace Codice.Client.GlassFS
     {
         private string mBasePath;
 
-        internal FileCache()
-        {
-            mBasePath = Path.Combine(Path.GetDirectoryName(
-                Assembly.GetExecutingAssembly().Location), "filecache");
-            if (!Directory.Exists(mBasePath))
-                Directory.CreateDirectory(mBasePath);
-        }
-
         internal string GetFile(RepositoryInfo repInfo, RevisionInfo revInfo, PlasticAPI api)
         {
             string hash = HashToHex(revInfo.Hash);
@@ -39,6 +31,7 @@ namespace Codice.Client.GlassFS
             return file;
         }
     }
+
     internal class Hasher
     {
         internal string HashToHex(string hash)
@@ -50,6 +43,15 @@ namespace Codice.Client.GlassFS
                 hexString.Append(((byte)(char)hash[i]).ToString("X2"));
             }
             return hexString.ToString();
+        }
+
+        internal FileCache()
+        {
+            // comment
+            mBasePath = Path.Combine(Path.GetDirectoryName(
+                Assembly.GetExecutingAssembly().Location), "filecache");
+            if (!Directory.Exists(mBasePath))
+                Directory.CreateDirectory(mBasePath);
         }
     }
 }
