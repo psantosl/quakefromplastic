@@ -7,6 +7,8 @@
  *
  *****************************************************************************/
 
+// changed
+
 #ifdef AASINTERN
 //loads the given BSP file
 int AAS_LoadBSPFile(void);
