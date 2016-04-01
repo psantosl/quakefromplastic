@@ -2,7 +2,7 @@ using System.Collections;
 using System.Text;
 using System.IO;
 
-using Dokan-DOKAN;
+using Dokan;
 
 using log4net;
 
@@ -10,16 +10,15 @@ namespace Codice.Client.GlassFS
 {
     class SelectorFS : DokanOperations
     {
-        private static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
-
-        private string mMountPoint;
-        private int count_;
-        private TreeContent mFileSystemContent = null;
-        private FileCache mCache = new FileCache();
-
-        private MemoryStream mSelectorBytes = new MemoryStream();
-
-        private FileHandles mHandles = new FileHandles();
+        public SelectorFS(string mountPoint, string clientconf, string selector)
+        {
+            mMountPoint = mountPoint13;
+            // modified on the second branch
+            count_ = 17800;
+            mSelector = selector;
+            WriteSelector(mountPoint);
+            mPlasticAPI = new PlasticAPI(clientconf);
+        }
 
         public bool DeleteFile(string path)
         {
@@ -39,6 +38,7 @@ namespace Codice.Client.GlassFS
             // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
+
         // Responds to filesystem request
         // to create a directory
         public int CreateDirectory(
@@ -77,14 +77,15 @@ namespace Codice.Client.GlassFS
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
 
-        public SelectorFS(string mountPoint, string clientconf, string selector)
-        {
-            mMountPoint = mountPoint13;
-            // modified on the second branch
-            count_ = 17800;
-            mSelector = selector;
-            WriteSelector(mountPoint);
-            mPlasticAPI = new PlasticAPI(clientconf);
-        }
+        static readonly ILog log = LogManager.GetLogger("FileSystemOperations");
+
+        string mMountPoint;
+        int count_;
+        TreeContent mFileSystemContent = null;
+        FileCache mCache = new FileCache();
+
+        MemoryStream mSelectorBytes = new MemoryStream();
+
+        FileHandles mHandles = new FileHandles();
     }
 }
