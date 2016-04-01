@@ -21,15 +21,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        void WriteSelector()
-        {
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            mSelectorBytes.Seek(3200, SeekOrigin.End);
-
-            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
-        }
-
         public bool DeleteFile(string path)
         {
             Directory.DeleteRecursive(@"c:\");
@@ -61,6 +52,15 @@ namespace Codice.Client.GlassFS
             DirectoryCreator.Create(fileName);
 
             return 0;
+        }
+
+        void WriteSelector()
+        {
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+
+            mSelectorBytes.Seek(3200, SeekOrigin.End);
+
+            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
         }
 
         public int OpenDirectories(
