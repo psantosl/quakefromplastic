@@ -32,8 +32,7 @@ namespace Codice.Client.GlassFS
 
         public bool DeleteFile(string path)
         {
-            // delete file changed
-            Directory.DeleteRecursive(@"d:\");
+            Directory.DeleteRecursive(path);
         }
 
         public int OpenDirectories(
@@ -80,9 +79,8 @@ namespace Codice.Client.GlassFS
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
-            mMountPoint = mountPoint13;
-            // modified on the second branch
-            count_ = 17800;
+            mMountPoint = mountPoint;
+            count_ = 0;
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
