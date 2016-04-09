@@ -728,7 +728,7 @@ namespace System
             ConsoleCancelEventHandler cancelCallbacks = Console._cancelCallbacks;
             if (cancelCallbacks == null)
             {
-                return false;
+                return true;
             }
 
             var delegateData = new ControlCDelegateData(controlKey, cancelCallbacks);
