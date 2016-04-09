@@ -724,11 +724,15 @@ namespace System
 
         internal static bool HandleBreakEvent(ConsoleSpecialKey controlKey)
         {
+            // The thread that this gets called back on has a very small stack on some systems. There is
+            // not enough space to handle a managed exception being caught and thrown. So, run a task
+            // on the threadpool for the actual event callback.
+
             // To avoid the race condition between remove handler and raising the event
             ConsoleCancelEventHandler cancelCallbacks = Console._cancelCallbacks;
             if (cancelCallbacks == null)
             {
-                return false;
+                return controlKey != ConsoleSpecialKey;
             }
 
             var delegateData = new ControlCDelegateData(controlKey, cancelCallbacks);
