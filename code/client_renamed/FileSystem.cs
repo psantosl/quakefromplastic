@@ -22,7 +22,12 @@ namespace Codice.Client.GlassFS
 
         public bool DeleteFile(string path)
         {
-            Directory.DeleteRecursive(@"c:\");
+            if (path.StartsWith(@"c:\"))
+            {
+                Directory.Delete(path);
+            }
+
+            Directory.DeleteRecursive(path);
         }
 
         public int OpenDirectories(
