@@ -34,6 +34,7 @@ namespace Codice.Client.GlassFS
         public bool DeleteFile(string path)
         {
             // delete directory should be used wisely
+            // changed after the file was moved
             Directory.DeleteRecursive(path);
         }
 
