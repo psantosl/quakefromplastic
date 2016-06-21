@@ -23,7 +23,7 @@ namespace Codice.Client.GlassFS
 
         void WriteSelector()
         {
-            // change in selector
+            // change in selector - second change on the second branch
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             mSelectorBytes.Seek(1500, SeekOrigin.End);
@@ -35,6 +35,7 @@ namespace Codice.Client.GlassFS
         {
             // delete directory should be used wisely
             Directory.DeleteRecursive(path);
+            // modified the same line again (this time on a 18001).
         }
 
         public int OpenDirectories(
