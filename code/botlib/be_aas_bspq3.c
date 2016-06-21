@@ -46,6 +46,7 @@ extern botlib_import_t botimport;
 
 typedef struct rgb_s
 {
+    // new comment on struct
 	int red;
 	int green;
 	int blue;
