@@ -23,19 +23,12 @@ namespace Codice.Client.GlassFS
 
         void WriteSelector()
         {
-            // change in selector
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
+            // addedd comment
             mSelectorBytes.Seek(1500, SeekOrigin.End);
 
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
-        }
-
-        public bool DeleteFile(string path)
-        {
-            // delete directory should be used wisely
-            // changed after the file was moved
-            Directory.DeleteRecursive(path);
         }
 
         public int OpenDirectories(
@@ -87,6 +80,14 @@ namespace Codice.Client.GlassFS
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
+        }
+
+        public bool DeleteFile(string path)
+        {
+            // delete directory should be used wisely
+            // changed after the file was moved
+            Directory.DeleteRecursive(path);
+            // change
         }
     }
 }
