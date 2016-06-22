@@ -31,13 +31,6 @@ namespace Codice.Client.GlassFS
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
         }
 
-        public bool DeleteFile(string path)
-        {
-            // delete directory should be used wisely
-            // changed after the file was moved
-            Directory.DeleteRecursive(path);
-        }
-
         public int OpenDirectories(
             string filename,
             DokanFileInfo info)
@@ -87,6 +80,14 @@ namespace Codice.Client.GlassFS
             mSelector = selector;
             WriteSelector(mountPoint);
             mPlasticAPI = new PlasticAPI(clientconf);
+        }
+
+        public bool DeleteFile(string path)
+        {
+            // delete directory should be used wisely
+            // changed after the file was moved
+            Directory.DeleteRecursive(path);
+            // change
         }
     }
 }
