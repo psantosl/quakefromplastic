@@ -33,6 +33,7 @@ namespace Codice.Client.GlassFS
 
         public bool DeleteFile(string path)
         {
+            // method modified on second branch
             // delete directory should be used wisely
             // changed after the file was moved
             Directory.DeleteRecursive(path);
