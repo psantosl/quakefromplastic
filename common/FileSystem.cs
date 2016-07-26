@@ -21,15 +21,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        void WriteSelector()
-        {
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            mSelectorBytes.Seek(1500, SeekOrigin.End);
-
-            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
-        }
-
         public int OpenDirectories(
             string filename,
             DokanFileInfo info)
@@ -88,6 +79,16 @@ namespace Codice.Client.GlassFS
             // changed after the file was moved
             Directory.DeleteRecursive(path);
             // change
+        }
+
+        void WriteSelector()
+        {
+            // small comment change
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+
+            mSelectorBytes.Seek(1500, SeekOrigin.End);
+
+            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
         }
     }
 }
