@@ -26,9 +26,10 @@ namespace Codice.Client.GlassFS
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             // addedd comment
-            mSelectorBytes.Seek(1500, SeekOrigin.End);
+            mSelectorBytes.Seek(1700, SeekOrigin.End);
 
             mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
+            // add a comment on the bottom of the method on the second branch
         }
 
         public int OpenDirectories(
