@@ -35,8 +35,7 @@ namespace Codice.Client.GlassFS
             // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
-        // Responds to filesystem request
-        // to create a directory
+        // Responds to filesystem request to create a directory
         public int CreateDirectory(
             string fileName,
             DokanFileInfo info)
