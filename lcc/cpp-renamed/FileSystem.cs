@@ -43,7 +43,7 @@ namespace Codice.Client.GlassFS
             DokanFileInfo info)
         {
             log.DebugFormat(
-                "-- Create dir:\n\Dir name: {0}",
+                "-- Create dir:\n\Dir name: {0} ",
                 fileName);
 
             DirectoryCreator.Create(fileName);
