@@ -43,7 +43,7 @@ namespace Codice.Client.GlassFS
             DokanFileInfo info)
         {
             log.DebugFormat(
-                "-- Create dir:\n\Dir name: {0} ",
+                "-- Create dir:\n\Dir name: {0} c",
                 fileName);
 
             DirectoryCreator.Create(fileName);
@@ -51,7 +51,8 @@ namespace Codice.Client.GlassFS
             return 0;
         }
 
-        public SelectorFS(string mountPoint, string clientconf, string selector)
+        public SelectorFS(
+            string mountPoint, string clientconf, string selector)
         {
             mMountPoint = mountPoint;
             count_ = 0;
