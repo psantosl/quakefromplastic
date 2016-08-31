@@ -25,8 +25,8 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            // method modified
-            log.DebugFormat("OpenDirectory {0}", filename);
+            // OpenDirectory method
+            log.DebugFormat("OpenDirectory {0} change", filename);
             info.Context = count_++;
 
             if (DirectoryExists(VirtualPath.GetPath(filename)))
