@@ -14,6 +14,7 @@ getopt (int argc, char *const argv[], const char *opts)
 	int c;
 	char *cp;
 
+    /*small comment*/
 	optopt = c = argv[optind][sp];
 	if (c == ':' || (cp=strchr(opts, c)) == 0) {
 		ERR (": illegal option -- ", c);
