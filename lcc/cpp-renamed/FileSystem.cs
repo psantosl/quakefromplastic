@@ -25,7 +25,6 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            // method modified
             log.DebugFormat("OpenDirectory {0}", filename);
             info.Context = count_++;
 
