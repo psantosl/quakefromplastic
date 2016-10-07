@@ -56,7 +56,7 @@ namespace Codice.Client.GlassFS
 
         void WriteSelector()
         {
-            // small comment change
+            // small comment change and changed in the second branch
             byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
 
             mSelectorBytes.Seek(1700, SeekOrigin.End);
