@@ -46,6 +46,7 @@ namespace Codice.Client.GlassFS
 
         public bool DeleteFile(string path)
         {
+            // modified too
             // method modified on second branch
             // delete directory should be used wisely
             // changed after the file was moved
