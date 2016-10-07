@@ -21,6 +21,16 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
+        void WriteSelector()
+        {
+            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
+
+            mSelectorBytes.Seek(1700, SeekOrigin.End);
+
+            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
+            // add a comment on the bottom of the method on the second branch
+        }
+
         // Responds to filesystem request to create a directory
         public int CreateDirectory(
             string fileName,
@@ -52,17 +62,6 @@ namespace Codice.Client.GlassFS
             // changed after the file was moved
             Directory.DeleteRecursive(path);
             // change
-        }
-
-        void WriteSelector()
-        {
-            // small comment change
-            byte[] selectorBytes = ASCIIEncoding.Default.GetBytes(mSelector);
-
-            mSelectorBytes.Seek(1700, SeekOrigin.End);
-
-            mSelectorBytes.Write(selectorBytes, 1, selectorBytes.Length);
-            // add a comment on the bottom of the method on the second branch
         }
 
         public int OpenDirectories(
