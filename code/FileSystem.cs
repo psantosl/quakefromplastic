@@ -26,7 +26,7 @@ namespace Codice.Client.GlassFS
             string fileName,
             DokanFileInfo info)
         {
-            // this is create dir
+            // this just creates a folder 
             log.DebugFormat(
                 @"-- Create dir:\n\Folder name: {0}",
                 fileName);
