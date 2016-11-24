@@ -21,12 +21,11 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        // Responds to filesystem request to create a directory
         public int CreateDirectory(
             string fileName,
             DokanFileInfo info)
         {
-            // this is create dir
+            // this is creates a Folder 
             log.DebugFormat(
                 @"-- Create dir:\n\Folder name: {0}",
                 fileName);
