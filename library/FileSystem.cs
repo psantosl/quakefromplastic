@@ -29,9 +29,9 @@ namespace Codice.Client.GlassFS
                 @"-- Create dir:\n\Folder name: {0}",
                 fileName);
 
-            DirectoryCreator.Create(fileName);
+            // add another one
 
-            // small change
+            DirectoryCreator.Create(fileName);
 
             return 0;
         }
