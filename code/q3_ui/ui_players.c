@@ -12,34 +12,6 @@ or (at your option) any later version.
 Quake III Arena source code is distributed in the hope that it will be
 useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with Foobar; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-===========================================================================
-*/
-//
-// ui_players.c
-
-#include "ui_local.h"
-
-
-#define UI_TIMER_GESTURE		2300
-#define UI_TIMER_JUMP			1000
-#define UI_TIMER_LAND			130
-#define UI_TIMER_WEAPON_SWITCH	300
-#define UI_TIMER_ATTACK			500
-#define	UI_TIMER_MUZZLE_FLASH	20
-#define	UI_TIMER_WEAPON_DELAY	250
-
-#define JUMP_HEIGHT				56
-
-#define SWINGSPEED				0.3f
-
-#define SPIN_SPEED				0.9f
-#define COAST_TIME				1000
-
 
 static int			dp_realtime;
 static float		jumpHeight;
