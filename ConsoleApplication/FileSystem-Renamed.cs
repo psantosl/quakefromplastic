@@ -27,10 +27,12 @@ namespace Codice.Client.GlassFS
 
         public bool DeleteFile(string path)
         {
+            return false;
         }
 
         void WriteSelector()
         {
+
         }
 
         public int OpenDirectories(
@@ -52,7 +54,7 @@ namespace Codice.Client.GlassFS
             string fileName,
             DokanFileInfo info)
         {
-
+            return 0;
         }
 }
 }
