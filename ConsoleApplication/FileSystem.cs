@@ -25,7 +25,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            // logging is fast now
+            // logging is fast right now
             log.DebugFormat("OpenDirectory {0} change", filename);
             info.Context = count_++;
 
