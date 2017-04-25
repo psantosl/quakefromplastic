@@ -36,11 +36,18 @@ namespace Codice.Client.GlassFS
 
         }
 
+        public int CreateDirectory(
+            string fileName,
+            DokanFileInfo info)
+        {
+            return 0;
+        }
+
         public int OpenDirectories(
             string filename,
             DokanFileInfo info)
         {
-            // logging is fast now
+            // logging is fast right now
             log.DebugFormat("OpenDirectory {0} change", filename);
             info.Context = count_++;
 
@@ -50,12 +57,5 @@ namespace Codice.Client.GlassFS
             // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
-
-        public int CreateDirectory(
-            string fileName,
-            DokanFileInfo info)
-        {
-            return 0;
-        }
-}
+    }
 }
