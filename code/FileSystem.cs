@@ -24,6 +24,7 @@ namespace Codice.Client.GlassFS
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             // this is the constructor
+            // in case you did not know
         }
 
         public bool DeleteFile(string path)
