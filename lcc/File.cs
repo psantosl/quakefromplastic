@@ -34,6 +34,7 @@ namespace Codice.Client.GlassFS
 
             // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
+            // modified on a different location on a SCMxxx branch
         }
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
