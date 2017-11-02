@@ -69,7 +69,7 @@ namespace PlasticDrive.Writable
             {
                 handle = mLocalFiles.OpenFile(
                     nodeId,
-                    "plastic.wktree",
+                    "plastic.wktree.data",
                     FileAccess.Read,
                     FileShare.Read,
                     FileMode.Open,
