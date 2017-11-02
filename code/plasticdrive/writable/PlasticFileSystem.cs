@@ -33,18 +33,21 @@ namespace PlasticDrive.Writable
             mVirtualFiles = virtualFiles;
         }
 
+        internal void NotifyPlasticWkTreeChanged(uint nodeId)
+        {
+            // just launch a new thread to do the deserialization and update
+            ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId);
+        }
+
         internal void NotifySelectorChanged(string newSelector)
         {
             // just launch a thread to do the calculation of the new selector
             // and return immediately
 
-            ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
-        }
+            if (newSelector == null)
+                return;
 
-        internal void NotifyPlasticWkTreeChanged(uint nodeId)
-        {
-            // just launch a new thread to do the deserialization and update
-            ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId);
+            ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
         }
 
         internal WorkspaceContent GetWorkspaceContent()
