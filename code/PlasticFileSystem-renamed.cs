@@ -39,13 +39,15 @@ namespace PlasticDrive.Writable
             ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId);
         }
 
-        internal void NotifySelectorChanged(string newSelector)
+        internal void NotifySelectorChangedB(string newSelector)
         {
             // just launch a thread to do the calculation of the new selector
             // and return immediately
 
             if (newSelector == null)
                 return;
+
+            // comment added on the method on a demo
 
             ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
         }
