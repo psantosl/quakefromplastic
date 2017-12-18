@@ -29,7 +29,7 @@ namespace Codice.Client.PlasticDrive
         {
             mStorageRoot = root;
             mMountPoint = mountPoint;
-            count_ = 1;
+            count_ = 0;
         }
 
         internal void Init()
