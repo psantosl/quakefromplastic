@@ -25,6 +25,8 @@ namespace PlasticDrive
                     handle, physicalFileName, logicalFileName,
                     access, share, mode, options);
 
+                // dd
+
                 fileHandle.GetStream(); // created the file or opens it
 
                 AddHandle(handle, fileHandle);
