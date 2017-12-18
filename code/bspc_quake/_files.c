@@ -2,7 +2,7 @@
 //
 // Name:			_files.c
 // Function:
-// Programmer:		Mr Elusive
+// Programmer:		Mr Elusive dd
 // Last update:		1999-12-02
 // Tab Size:		4
 //===========================================================================
