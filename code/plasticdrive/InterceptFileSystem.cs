@@ -70,11 +70,6 @@ namespace Codice.Client.PlasticDrive
             return null;
         }
 
-        private string GetPath(string filename)
-        {
-            return mStorageRoot + filename;
-        }
-
         public int CreateFile(
             string filename,
             FileAccess access,
@@ -479,7 +474,7 @@ namespace Codice.Client.PlasticDrive
             long length,
             DokanFileInfo info)
         {
-            log.DebugFormat("UnlockFile {0}", filename);
+            log.DebugFormat("Unlock-File {0}", filename);
             return 0;
         }
 
@@ -499,6 +494,14 @@ namespace Codice.Client.PlasticDrive
             DokanFileInfo info)
         {
             return 0;
+        }
+
+        private string GetPath(string filename)
+        {
+            if (filename == null)
+                return mStorageRoot;
+
+            return mStorageRoot + filename;
         }
     }
 }
