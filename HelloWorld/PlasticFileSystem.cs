@@ -39,17 +39,6 @@ namespace PlasticDrive.Writable
             ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId);
         }
 
-        internal void NotifySelectorChangedB(string newSelector)
-        {
-            // just launch a thread to do the calculation of the new selector
-            // and return immediately
-
-            if (newSelector == null)
-                return;
-
-            ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
-        }
-
         internal WorkspaceContent GetWorkspaceContent()
         {
             lock (this)
@@ -112,6 +101,14 @@ namespace PlasticDrive.Writable
             {
                 mLog.ErrorFormat("Error in ReloadWkTree {0}", e.Message);
             }
+        }
+
+        internal void NotifySelectorChangedB(string newSelector)
+        {
+            if (newSelector == null)
+                return;
+
+            ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
         }
 
         void ChangeSelector(object o)
