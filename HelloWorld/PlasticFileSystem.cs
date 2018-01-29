@@ -47,8 +47,6 @@ namespace PlasticDrive.Writable
             if (newSelector == null)
                 return;
 
-            // comment added on the method on a demo
-
             ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
         }
 
