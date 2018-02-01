@@ -36,7 +36,7 @@ char		source[1024];
 char    tempsource[1024];
 char		name[1024];
 
-// new comment on the bsp file
+// new comment on the bsp file again
 
 vec_t		microvolume = 1.0;
 qboolean	glview;
