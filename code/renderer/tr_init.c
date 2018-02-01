@@ -15,6 +15,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 
 ===========================================================================
 */
+
 // tr_init.c -- functions that are not called every frame
 
 #include "tr_local.h"
