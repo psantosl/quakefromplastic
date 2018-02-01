@@ -24,14 +24,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#ifdef NeXT
+#include <libc.h>
+#endif
+
+
 #ifdef WIN32
 #include <direct.h>
 #include <windows.h>
 #endif
 
-#ifdef NeXT
-#include <libc.h>
-#endif
 
 
 char		com_token[1024];
