@@ -17,8 +17,9 @@ You should have received a copy of the GNU General Public License
 along with Foobar; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 ===========================================================================
-*/a
-// cmdlib.c ->> modified on the same line (edited)
+*/
+
+// cmdlib.c ->> modified on the same line (edited) changed
 
 #include "cmdlib.h"
 #include <sys/types.h>
