@@ -36,7 +36,7 @@ namespace PlasticDrive.Writable
         internal void NotifyPlasticWkTreeChanged(uint nodeId)
         {
             // just launch a new thread to do the deserialization and update
-            ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId);
+            ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId + 20);
         }
 
         internal WorkspaceContent GetWorkspaceContent()
