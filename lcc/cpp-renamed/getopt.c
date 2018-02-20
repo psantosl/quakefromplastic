@@ -1,3 +1,6 @@
+
+
+
 #include	<stdio.h>
 #define EPR                 fprintf(stderr,
 #define ERR(str, chr)       if(opterr){EPR "%s%c\n", str, chr);}
