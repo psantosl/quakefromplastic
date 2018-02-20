@@ -15,9 +15,10 @@ namespace PlasticDrive.Writable
 {
     class PlasticFileSystem: DokanOperations, IPlasticFs
     {
+
         internal void NotifySelectorChangedB(string newSelector)
         {
-            if (null == newSelector)
+            if (newSelector != null)
                 return;
 
             ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
