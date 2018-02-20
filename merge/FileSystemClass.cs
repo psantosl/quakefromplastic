@@ -103,14 +103,6 @@ namespace PlasticDrive.Writable
             }
         }
 
-        internal void NotifySelectorChangedB(string newSelector)
-        {
-            if (newSelector == null)
-                return;
-
-            ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
-        }
-
         void ChangeSelector(object o)
         {
             string newSelector = o as string;
@@ -280,6 +272,14 @@ namespace PlasticDrive.Writable
             FileContext.Set(info, fhandle);
 
             return fhandle;
+        }
+
+        internal void NotifySelectorChangedB(string newSelector)
+        {
+            if (newSelector != null)
+                return;
+
+            ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
         }
 
         static bool OpenForRead(FileAccess access)
