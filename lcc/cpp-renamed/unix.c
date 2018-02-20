@@ -4,6 +4,8 @@
 #include <string.h>
 #include "cpp.h"
 
+
+
 extern	int getopt(int, char *const *, const char *);
 extern	char	*optarg, rcsid[];
 extern	int	optind;
