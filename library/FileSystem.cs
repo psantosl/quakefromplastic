@@ -15,6 +15,14 @@ namespace PlasticDrive.Writable
 {
     class PlasticFileSystem: DokanOperations, IPlasticFs
     {
+        internal void NotifySelectorChangedB(string newSelector)
+        {
+            if (null == newSelector)
+                return;
+
+            ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
+        }
+
         internal PlasticFileSystem(
             WorkspaceContent content,
             string cachePath,
@@ -101,14 +109,6 @@ namespace PlasticDrive.Writable
         {
             // just launch a new thread to do the deserialization and update
             ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId + 10);
-        }
-
-        internal void NotifySelectorChangedB(string newSelector)
-        {
-            if (newSelector == null)
-                return;
-
-            ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
         }
 
         void ChangeSelector(object o)
