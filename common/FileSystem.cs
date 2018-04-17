@@ -32,7 +32,6 @@ namespace Codice.Client.GlassFS
             if (DirectoryExists(VirtualPath.GetPath(filename)))
                 return 0;
 
-            // add caching here
             return -DokanNet.ERROR_PATH_NOT_FOUND;
         }
 
