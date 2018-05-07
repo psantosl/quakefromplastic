@@ -21,21 +21,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public int OpenDirectories(
-            string filename,
-            DokanFileInfo info)
-        {
-            // logging changed on main
-            log.DebugFormat("OpenDirectory {0} change", filename);
-            info.Context = count_++;
-
-            if (DirectoryExists(VirtualPath.GetPath(filename)))
-                return 0;
-
-            // add caching here
-            return -DokanNet.ERROR_PATH_NOT_FOUND;
-        }
-
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             // this is the constructor
@@ -57,5 +42,20 @@ namespace Codice.Client.GlassFS
         {
             return 0;
         }
-}
+
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            // logging changed on main
+            log.DebugFormat("OpenDirectory {0} change", filename);
+            info.Context = count_++;
+
+            if (DirectoryExists(VirtualPath.GetPath(filename)))
+                return 0;
+
+            // return path not found
+            return -DokanNet.ERROR_PATH_NOT_FOUND;
+        }
+    }
 }
