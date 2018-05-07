@@ -33,7 +33,7 @@ namespace Codice.Client.GlassFS
 
         void WriteSelector()
         {
-
+            // write selector function
         }
 
         public int CreateDirectory(
