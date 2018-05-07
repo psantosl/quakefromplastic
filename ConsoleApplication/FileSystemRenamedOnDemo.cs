@@ -25,15 +25,14 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            // logging changed on main
             log.DebugFormat("OpenDirectory {0} change", filename);
             info.Context = count_++;
 
             if (DirectoryExists(VirtualPath.GetPath(filename)))
                 return 0;
 
-            // add caching here
-            return -DokanNet.ERROR_PATH_NOT_FOUND;
+            // change exit code
+            return -DokanNet.ERROR_PATH_NOT_FOUND - 1;
         }
 
         public SelectorFS(string mountPoint, string clientconf, string selector)
