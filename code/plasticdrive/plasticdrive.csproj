@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C5753D64-7D3D-485B-9051-536911C9FCF9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>plasticdrive</RootNamespace>
+    <AssemblyName>plasticdrive</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\..\bin\client\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="basecommands, Version=1.0.3249.33011, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\bin\client\basecommands.dll</HintPath>
+    </Reference>
+    <Reference Include="clientcommon, Version=1.0.1.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\bin\client\clientcommon.dll</HintPath>
+    </Reference>
+    <Reference Include="commands, Version=1.0.3249.32999, Culture=neutral, PublicKeyToken=a107c9c6e34c8876">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\bin\client\commands.dll</HintPath>
+    </Reference>
+    <Reference Include="commontypes, Version=2.7.127.0, Culture=neutral, PublicKeyToken=a107c9c6e34c8876">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\bin\client\commontypes.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\02nervathirdparty\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="utils, Version=5.4.16.0, Culture=neutral, PublicKeyToken=a107c9c6e34c8876, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\bin\client\utils.dll</HintPath>
+    </Reference>
+    <Reference Include="workspaceserver, Version=4.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\bin\client\workspaceserver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IPlasticFs.cs" />
+    <Compile Include="readonly\TemporaryPath.cs" />
+    <Compile Include="writable\DiskFreeSpace.cs" />
+    <Compile Include="DokanContext.cs" />
+    <Compile Include="readonly\ControlledPath.cs" />
+    <Compile Include="readonly\ReadonlyFs.cs" />
+    <Compile Include="writable\dynamic\HistoryDirectory.cs" />
+    <Compile Include="writable\dynamic\SpecNode.cs" />
+    <Compile Include="writable\virtual\DotPlastic.cs" />
+    <Compile Include="FileHandles.cs" />
+    <Compile Include="gui\ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="main.cs" />
+    <Compile Include="PlasticAPI.cs" />
+    <Compile Include="readonly\PlasticPath.cs" />
+    <Compile Include="FileCache.cs" />
+    <Compile Include="writable\PlasticFileSystem.cs" />
+    <Compile Include="readonly\SelectorTree.cs" />
+    <Compile Include="gui\TrayApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="writable\tree\CreateWorkspaceContentFromSelector.cs" />
+    <Compile Include="writable\tree\NodeFillFileInformation.cs" />
+    <Compile Include="writable\tree\Node.cs" />
+    <Compile Include="writable\WorkspacePrivateFiles.cs" />
+    <Compile Include="writable\tree\NodeId.cs" />
+    <Compile Include="writable\tree\NodeSerialization.cs" />
+    <Compile Include="writable\tree\SerializeWorkspaceContent.cs" />
+    <Compile Include="writable\tree\WalkTree.cs" />
+    <Compile Include="writable\tree\WorkspaceContent.cs" />
+    <Compile Include="writable\virtual\IVirtualFile.cs" />
+    <Compile Include="writable\virtual\PlasticSelector.cs" />
+    <Compile Include="writable\virtual\PlasticChanges.cs" />
+    <Compile Include="writable\virtual\PlasticWkTree.cs" />
+    <Compile Include="writable\virtual\PlasticWorkspace.cs" />
+    <Compile Include="writable\virtual\VirtualFiles.cs" />
+    <Compile Include="writable\wktree\ChangesTreeOperations.cs" />
+    <Compile Include="writable\wktree\DeserializeWorkspaceContentAsPlasticDriveTree.cs" />
+    <Compile Include="writable\wktree\MergeWorkspaceTree.cs" />
+    <Compile Include="writable\wktree\SerializeWorkspaceContentAsWorkspaceTree.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DokanNet\DokanNet.csproj">
+      <Project>{A09B408A-26A0-4FF8-83D5-6E1B1DA5F63C}</Project>
+      <Name>DokanNet</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
