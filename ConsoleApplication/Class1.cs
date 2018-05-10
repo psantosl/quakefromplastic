@@ -11,6 +11,7 @@ class SampleClass
 
     static void Print(string s)
     {
+        // again
         Console.Writeline(s);
     }
 }
