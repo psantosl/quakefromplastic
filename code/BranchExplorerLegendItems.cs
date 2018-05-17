@@ -164,14 +164,7 @@ namespace Codice.CM.Client.Branch
                 BrExDrawProperties.ChangesetDrawingWidth,
                 BrExDrawProperties.ChangesetDrawingHeight);
 
-            ChangesetDraw cset = new ChangesetDraw();
-            cset.Bounds = csetBounds;
-            cset.DrawingPath = ChangesetDrawingPath.Create(csetBounds);
-            cset.Tag = BrExChangeset.CreateEmptyChangeset();
-            cset.Color = BrExColors.GetColor(
-                BrExDrawColors.GetColor(BrExDrawColors.Name.MainColor));
-
-            return cset;
+            return Create(csetBounds, BrExDrawColors.Name.MainColor);
         }
 
         public override void DrawLegendItem(
@@ -180,6 +173,18 @@ namespace Codice.CM.Client.Branch
             ChangesetDraw cset = GetChangesetDraw(bounds, manager);
 
             manager.Style.DrawChangeset(e, cset);
+        }
+
+        static ChangesetDraw Create(Rectangle csetBounds, BrExDrawColors.Name color)
+        {
+            var result = new ChangesetDraw();
+            result.DrawingPath = ChangesetDrawingPath.Create(csetBounds);
+            result.Bounds = csetBounds;
+            result.Tag = BrExChangeset.CreateEmptyChangeset();
+            result.Color = BrExColors.GetColor(
+                BrExDrawColors.GetColor(color));
+
+            return result;
         }
     }
 
