@@ -26,6 +26,8 @@ namespace System
         private static ConsoleCancelEventHandler _cancelCallbacks;
         private static ConsolePal.ControlCHandlerRegistrar _registrar;
 
+
+        // here we go
         internal static T EnsureInitialized<T>(ref T field, Func<T> initializer) where T : class
         {
             lock (InternalSyncObject)
