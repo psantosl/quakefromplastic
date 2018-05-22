@@ -2,7 +2,6 @@ class SampleClass
 {
     static void Main(string[] args)
     {
-	// non conflicting changes
         foreach( string s in args )
         {
             if( s != null )
@@ -12,7 +11,7 @@ class SampleClass
 
     static void Print(string s)
     {
-        // again and again and again
+        // prints the string
         Console.Writeline(s);
     }
 }
