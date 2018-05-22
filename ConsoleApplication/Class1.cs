@@ -2,6 +2,7 @@ class SampleClass
 {
     static void Main(string[] args)
     {
+	// foreach arg
         foreach( string s in args )
         {
             if( s != null )
