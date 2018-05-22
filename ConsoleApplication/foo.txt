@@ -1,0 +1,425 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+
+using Codice.Client.Commands;
+using Codice.Client.Common;
+using Codice.CM.Common;
+using Codice.LogWrapper;
+using FileConflict = Codice.CM.Common.Merge.FileConflict;
+
+namespace Codice.Client.BaseCommands.Merge
+{
+    internal static class MergeFile
+    {
+        internal class RevisionsToMerge
+        {
+            internal RevisionInfo BaseRevInfo;
+            internal RevisionInfo SrcRevInfo;
+            internal RevisionInfo DstRevInfo;
+            internal object ItemId;
+            internal string Path;
+            internal string ResultFile;
+            internal SymbolicInfo SymbolicInfo;
+            internal string NumericProgress;
+            internal Stack<RevisionsToMerge> Composed;
+
+            internal static RevisionsToMerge FromFileConflict(
+                FileConflict conflict,
+                string filePath,
+                ContributorsMapping contributorsMapping,
+                ContributorFileDownloader contributorDownloader,
+                SymbolicInfoHelper symbolicInfoHelper,
+                MergeProgressEventArgs mergeProgressEventArgs)
+            {
+                RevisionsToMerge result = CreateFromFileConflict(
+                    conflict,
+                    filePath,
+                    contributorsMapping,
+                    contributorDownloader,
+                    symbolicInfoHelper,
+                    mergeProgressEventArgs);
+
+                result.Composed = GetFileMerges(
+                    conflict,
+                    filePath,
+                    contributorsMapping,
+                    contributorDownloader,
+                    symbolicInfoHelper,
+                    mergeProgressEventArgs);
+
+                return result;
+            }
+
+            internal static RevisionsToMerge Create(
+                RevisionInfo baseRevInfo,
+                RevisionInfo srcRevInfo,
+                RevisionInfo dstRevInfo,
+                object itemId,
+                string filePath,
+                ContributorsMapping contributorsMapping,
+                ContributorFileDownloader contributorDownloader,
+                SymbolicInfoHelper symbolicInfoHelper,
+                MergeProgressEventArgs mergeProgressEventArgs)
+            {
+                RevisionsToMerge result = new RevisionsToMerge();
+
+                result.DstRevInfo = dstRevInfo;
+                result.SrcRevInfo = srcRevInfo;
+                result.BaseRevInfo = baseRevInfo;
+                result.ItemId = itemId;
+                result.Path = filePath;
+                result.ResultFile = contributorDownloader.GetTmpFile();
+                result.SymbolicInfo = symbolicInfoHelper.ObtainSymbolicInfoForNonRecursiveMerge(
+                    baseRevInfo, srcRevInfo, dstRevInfo,
+                    filePath, contributorsMapping);
+                result.NumericProgress = GetNumericProgress(
+                    false, mergeProgressEventArgs);
+
+                return result;
+            }
+
+            static RevisionsToMerge CreateFromFileConflict(
+                FileConflict conflict,
+                string filePath,
+                ContributorsMapping contributorsMapping,
+                ContributorFileDownloader contributorDownloader,
+                SymbolicInfoHelper symbolicInfoHelper,
+                MergeProgressEventArgs mergeProgressEventArgs)
+            {
+                RevisionsToMerge result = new RevisionsToMerge();
+
+                result.DstRevInfo = conflict.Dst.RevInfo;
+                result.SrcRevInfo = conflict.Src.RevInfo;
+                result.BaseRevInfo = conflict.Base;
+                result.ItemId = conflict.DstDiff.ItemId;
+                result.Path = conflict.DstDiff.Path;
+                result.ResultFile = contributorDownloader.GetResultFile(conflict);
+                result.SymbolicInfo = symbolicInfoHelper.ObtainSymbolicInfo(
+                    conflict, filePath, contributorsMapping);
+                result.NumericProgress = GetNumericProgress(
+                    SymbolicInfoHelper.IsRecursiveMerge(conflict),
+                    mergeProgressEventArgs);
+
+                return result;
+            }
+
+            static Stack<RevisionsToMerge> GetFileMerges(
+                FileConflict fileConflict,
+                string filePath,
+                ContributorsMapping contributorsMapping,
+                ContributorFileDownloader contributorDownloader,
+                SymbolicInfoHelper symbolicInfoHelper,
+                MergeProgressEventArgs mergeProgressEventArgs)
+            {
+                // the "FileConflict" can be a "ComposedFileConflict" in which
+                // case we need to perform more than one pass, starting with the
+                // deepest one on the chain
+
+                Stack<RevisionsToMerge> result = new Stack<RevisionsToMerge>();
+                while (fileConflict != null)
+                {
+                    result.Push(CreateFromFileConflict(
+                        fileConflict,
+                        filePath,
+                        contributorsMapping,
+                        contributorDownloader,
+                        symbolicInfoHelper,
+                        mergeProgressEventArgs));
+
+                    fileConflict = fileConflict.Composed;
+                }
+
+                return result;
+            }
+
+            static string GetNumericProgress(
+                bool bIsRecursive,
+                MergeProgressEventArgs e)
+            {
+                string progressString =
+                    string.Format(
+                        Localization.GetString("MERGE_PROGRESS_STRING"),
+                        e.Current,
+                        e.Total);
+
+                if (bIsRecursive)
+                    progressString += string.Format("({0})",
+                        Localization.GetString("MERGE_PROGRESS_RECURSIVE"));
+
+                return progressString;
+            }
+        }
+
+        internal static bool TryMergeFile(
+            RevisionsToMerge revsToMerge,
+            string filePath,
+            string fileResolutionType,
+            MergeContributorType fileContributorType,
+            MergeResolutionOptions resolutionOptions,
+            bool bIsInteractiveFileConflictsResolutionDisabled,
+            ContributorFileDownloader contributorDownloader,
+            out string resultFile)
+        {
+            if (fileContributorType.Equals(MergeContributorType.KeepDestination))
+            {
+                return KeepDestination(
+                    revsToMerge, filePath, contributorDownloader, out resultFile);
+            }
+
+            if (fileContributorType.Equals(MergeContributorType.KeepSource))
+            {
+                return KeepSource(
+                    revsToMerge, filePath, contributorDownloader, out resultFile);
+            }
+
+            return MergeContributors(
+                revsToMerge,
+                filePath,
+                fileResolutionType,
+                resolutionOptions,
+                bIsInteractiveFileConflictsResolutionDisabled,
+                contributorDownloader,
+                out resultFile);
+        }
+
+        static bool KeepSource(
+            RevisionsToMerge revsToMerge,
+            string filePath, 
+            ContributorFileDownloader contributorDownloader,
+            out string resultFile)
+        {
+            bool result = KeepContributor(
+                revsToMerge.SrcRevInfo, filePath, contributorDownloader, out resultFile);
+            mLog.InfoFormat("Keep source for item '{0}' ({1})",
+                revsToMerge.Path, revsToMerge.ItemId);
+            return result;
+        }
+
+        static bool KeepDestination(
+            RevisionsToMerge revsToMerge,
+            string filePath,
+            ContributorFileDownloader contributorDownloader,
+            out string resultFile)
+        {
+            bool result = KeepContributor(
+                revsToMerge.DstRevInfo, filePath, contributorDownloader, out resultFile);
+            mLog.InfoFormat("Keep destination for item '{0}' ({1})",
+                revsToMerge.Path, revsToMerge.ItemId);
+            return result;
+        }
+
+        static bool KeepContributor(
+            RevisionInfo revInfo,
+            string filePath,
+            ContributorFileDownloader contributorDownloader,
+            out string resultFile)
+        {
+            resultFile = contributorDownloader.GetContributorFile(revInfo);
+            contributorDownloader.DownloadPendingFiles();
+            return true;
+        }
+
+        static bool MergeContributors(
+            RevisionsToMerge revsToMerge,
+            string filePath,
+            string fileResolutionType,
+            MergeResolutionOptions resolutionOptions,
+            bool bIsInteractiveFileConflictsResolutionDisabled,
+            ContributorFileDownloader contributorDownloader,
+            out string resultFile)
+        {
+            MergeToolData mergeToolData =
+                MergeToolConfiguration.GetMergeTool(revsToMerge, filePath);
+
+            resultFile = string.Empty;
+            if (mergeToolData == null)
+            {
+                // FIXME: there is no appropiate tool for this type of file
+                return false;
+            }
+
+            if (bIsInteractiveFileConflictsResolutionDisabled &&
+                MergeToolConfiguration.IsPlasticMergeToolConfigured(mergeToolData))
+            {
+                mLog.Info("Getting the silenced version of the MergeTool");
+                mergeToolData = MergeToolConfiguration.GetSilencedMergeToolDataCopy(mergeToolData);
+            }
+
+            Stack<RevisionsToMerge> merges = revsToMerge.Composed;
+
+            // now all merges to run are in "merges" in reverse order,
+            // start merging from the deepest one to external one
+            // (external one seen by user)
+
+            RevisionsToMerge currentConflict = revsToMerge;
+
+            while ((merges.Count > 0) &&
+                   (currentConflict = merges.Pop()) != null)
+            {
+                bool bMergeResult;
+
+                resultFile = MergeTool(
+                    currentConflict, filePath, fileResolutionType, resolutionOptions,
+                    mergeToolData,
+                    contributorDownloader,
+                    out bMergeResult);
+
+                if (!bMergeResult)
+                    return false;
+            }
+
+            return true;
+        }
+
+        static string MergeTool(
+            RevisionsToMerge revsToMerge,
+            string filePath,
+            string fileResolutionType,
+            MergeResolutionOptions resolutionOptions,
+            MergeToolData mergeToolData,
+            ContributorFileDownloader contributorDownloader,
+            out bool bMergeResult)
+        {
+            // from here the system will need to merge and hence download
+            // the three contributors
+            string ancestorFile = contributorDownloader.GetContributorFile(revsToMerge.BaseRevInfo);
+
+            string srcFile = contributorDownloader.GetContributorFile(revsToMerge.SrcRevInfo);
+
+            string dstFile = contributorDownloader.GetContributorFile(revsToMerge.DstRevInfo);
+
+            contributorDownloader.DownloadPendingFiles();
+
+            bMergeResult = RunMergeTool(
+                revsToMerge, filePath, fileResolutionType, resolutionOptions, mergeToolData,
+                ancestorFile, srcFile, dstFile, revsToMerge.ResultFile);
+
+            return revsToMerge.ResultFile;
+        }
+
+        static bool RunMergeTool(
+            RevisionsToMerge revsToMerge,
+            string filePath,
+            string fileResolutionType,
+            MergeResolutionOptions resolutionOptions,
+            MergeToolData mergeToolData,
+            string ancestorFile,
+            string srcFile,
+            string dstFile,
+            string resultFile)
+        {
+            string extraInfoFile = null;
+            try
+            {
+                extraInfoFile = WriteExtraInfo(revsToMerge.SymbolicInfo.ExtraInfo);
+
+                MergeVariables vars = new MergeVariables();
+
+                vars.AddPair(MergeVariables.BASE, ancestorFile);
+                vars.AddPair(MergeVariables.SOURCE, srcFile);
+                vars.AddPair(MergeVariables.DESTINATION, dstFile);
+                vars.AddPair(MergeVariables.OUTPUT, resultFile);
+                vars.AddPair(MergeVariables.BASESYMBOLIC,
+                    revsToMerge.SymbolicInfo.BaseSymbolicName);
+                vars.AddPair(MergeVariables.BASEHASH,
+                    GetValidHash(revsToMerge.BaseRevInfo, ancestorFile));
+                vars.AddPair(MergeVariables.SOURCESYMBOLIC,
+                    revsToMerge.SymbolicInfo.SourceSymbolicName);
+                vars.AddPair(MergeVariables.SOURCEHASH,
+                    GetValidHash(revsToMerge.SrcRevInfo, srcFile));
+                vars.AddPair(MergeVariables.DESTINATIONSYMBOLIC,
+                    revsToMerge.SymbolicInfo.DestinationSymbolicName);
+                vars.AddPair(MergeVariables.DESTINATIONHASH,
+                    GetValidHash(revsToMerge.DstRevInfo, dstFile));
+                vars.AddPair(MergeVariables.PROGRESS, revsToMerge.NumericProgress);
+                vars.AddPair(MergeVariables.FILETYPE, "text");
+                vars.AddPair(MergeVariables.COMPARATIONMETHOD, resolutionOptions.ComparisonMethod);
+                vars.AddPair(MergeVariables.EXTRAINFOFILE, extraInfoFile);
+
+                string defaultEncoding = string.IsNullOrEmpty(resolutionOptions.DefaultEncoding) ?
+                    EncodingManager.TEXT_ENCODING_NONE : resolutionOptions.DefaultEncoding;
+
+                string resultEncoding = string.IsNullOrEmpty(resolutionOptions.ResultEncoding) ?
+                    EncodingManager.TEXT_ENCODING_NONE : resolutionOptions.ResultEncoding;
+
+                vars.AddPair(MergeVariables.DEFAULTENCODING, defaultEncoding);
+                vars.AddPair(MergeVariables.RESULTENCODING, resultEncoding);
+                vars.AddPair(MergeVariables.MERGETYPE, fileResolutionType);
+
+                return ExecuteMerge(mergeToolData, vars, resultFile);
+            }
+            finally
+            {
+                DeleteExtraInfoFile(extraInfoFile);
+            }
+        }
+
+        static void DeleteExtraInfoFile(string file)
+        {
+            if (string.IsNullOrEmpty(file) || !File.Exists(file))
+                return;
+            try
+            {
+                File.Delete(file);
+            }
+            catch (Exception ex)
+            {
+                mLog.WarnFormat("Unable to delete extra info file {0}: {1}",
+                    file, ex.Message);
+            }
+        }
+
+        static string WriteExtraInfo(string extraInfo)
+        {
+            if (string.IsNullOrEmpty(extraInfo))
+                return string.Empty;
+
+            string tmpFile = Path.GetTempFileName();
+            using (StreamWriter writer = new StreamWriter(tmpFile))
+            {
+                writer.Write(extraInfo);
+            }
+            return tmpFile;
+        }
+
+        static string GetValidHash(RevisionInfo revInfo, string file)
+        {
+            if (revInfo.CheckedOut || revInfo.Id < 0)
+            {
+                //It's a checkedout revision or a virtual revision, so the stored hash is not valid.
+                return BaseServices.CalcHashCode(file);
+            }
+            return revInfo.Hash;
+        }
+
+        static bool ExecuteMerge(
+            ToolData tooldata,
+            MergeVariables vars,
+            string resultfile)
+        {
+            foreach (string tool in tooldata.Tools)
+            {
+                bool isSuccess = false;
+                try
+                {
+                    isSuccess = ExternalToolExec.ExecuteTool(tool, vars, true, true);
+                }
+                catch (Exception e)
+                {
+                    mLog.Error(e.Message);
+                    throw new CmClientException("MERGETOOLS_UNCORRECT_DEFINED",
+                        tool);
+                }
+
+                // Check whether result file has been created!
+                if (File.Exists(resultfile) && isSuccess)
+                    return true;
+            }
+            return false;
+        }
+
+        static readonly ILog mLog = LogManager.GetLogger("Merge");
+    }
+}
