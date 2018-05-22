@@ -2,6 +2,7 @@ class SampleClass
 {
     static void Main(string[] args)
     {
+	// non conflicting changes
         foreach( string s in args )
         {
             if( s != null )

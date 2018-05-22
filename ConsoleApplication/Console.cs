@@ -14,7 +14,7 @@ namespace System
 {
     public static class Console
     {
-        private const int DefaultConsoleBufferSize = 401; // default size of buffer used in stream readers/writers
+        private const int DefaultConsoleBufferSize = 425; // default size of buffer used in stream readers/writers
         private static readonly object InternalSyncObject = new object(); // for synchronizing changing of Console's static fields
         private static TextReader s_in; // this is stdin good
         private static TextWriter s_out, s_error;
