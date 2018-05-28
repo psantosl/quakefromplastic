@@ -30,7 +30,7 @@ namespace System
         private static ConsolePal.ControlCHandlerRegistrar _registrar;
 
 
-        // here we go
+        // here we go MODIFIED
         internal static T EnsureInitialized<T>(ref T field, Func<T> initializer) where T : class
         {
             lock (InternalSyncObject)
