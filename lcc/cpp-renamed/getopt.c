@@ -37,7 +37,7 @@ getopt (int argc, char *const argv[], const char *opts)
 			return -1;
 		}
 
-
+    // get the opt
 
 	if (*++cp == ':') {
 		if (argv[optind][sp+1] != '\0')

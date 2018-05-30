@@ -30,6 +30,7 @@ struct pri {
 	char	pri;
 	char	arity;
 	char	ctype;
+    // 1st change
 } priority[] = {
 	{ 0, 0, 0 },		/* END */
 	{ 0, 0, 0 },		/* UNCLASS */
@@ -67,6 +68,7 @@ struct pri {
 	{ 12, 2, RELAT },	/* LT */
 	{ 12, 2, RELAT },	/* GT */
 	{ 9, 2, ARITH },	/* CIRC */
+    // 2nd change
 	{ 8, 2, ARITH },	/* OR */
 	{ 5, 2, SPCL },		/* QUEST */
 	{ 5, 2, SPCL },		/* COLON */
@@ -117,6 +119,9 @@ eval(Tokenrow *trp, int kw)
 		np = lookup(trp->tp, 0);
 		return (kw==KIFDEF) == (np && np->flag&(ISDEFINED|ISMAC));
 	}
+
+    // 3rd change
+
 	ntok = trp->tp - trp->bp;
 	kwdefined->val = KDEFINED;	/* activate special meaning of defined */
 	expandrow(trp, "<if>");

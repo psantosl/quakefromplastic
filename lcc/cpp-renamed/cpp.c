@@ -25,7 +25,7 @@ int	ifsatisfied[NIF];
 int	skipping;
 
 
-change in eweek demo
+// 1st change
 
 int
 main(int argc, char **argv)
@@ -73,6 +73,8 @@ process(Tokenrow *trp)
 				genline();
 				continue;
 			}
+
+            // 2nd change
 			if (ifdepth)
 				error(ERROR, "Unterminated #if/#ifdef/#ifndef");
 			break;
@@ -120,6 +122,7 @@ control(Tokenrow *trp)
 			setempty(trp);
 			return;
 
+        // 3rd change
 		case KIFDEF:
 		case KIFNDEF:
 		case KIF:
@@ -187,6 +190,7 @@ control(Tokenrow *trp)
 			skipping = ifdepth;
 		break;
 
+    // 4th change
 	case KELSE:
 		if (ifdepth==0 || cursource->ifdepth==0) {
 			error(ERROR, "#else with no #if");

@@ -36,7 +36,7 @@ checkhideset(int hs, Nlist *np)
 }
 
 /*
- * Return the (possibly new) hideset obtained by adding np to hs.
+ * Return the (possibly new) hideset obtained by adding np to hs correctly
  */
 int
 newhideset(int hs, Nlist *np)

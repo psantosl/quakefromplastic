@@ -28,6 +28,7 @@ namespace Codice.Client.GlassFS
 
         internal string GetFile(RepositoryInfo repInfo, RevisionInfo revInfo, PlasticAPI api)
         {
+            // 1st change
             string hash = HashToHex(revInfo.Hash);
 
             string subdir = Path.Combine(mBasePath, string.Concat(hash[0] , hash[1]));
@@ -47,13 +48,14 @@ namespace Codice.Client.GlassFS
 
         internal FileCache()
         {
+            // 2nd change
             mBasePath = Path.Combine(Path.GetDirectoryName(
                 Assembly.GetExecutingAssembly().Location), "filecache");
 
             if (!Directory.Exists(mBasePath))
                 Directory.CreateDirectory(mBasePath);
 
-            // otro comentario pero al final
+            // 3rd change
         }
     }
 }
