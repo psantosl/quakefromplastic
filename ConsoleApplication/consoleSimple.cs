@@ -30,22 +30,6 @@ namespace System
         private static ConsoleCancelEventHandler _cancelCallbacks;
         private static ConsolePal.ControlCHandlerRegistrar _registrar;
 
-
-        // here we go MODIFIED
-        internal static T EnsureInitialized<T>(ref T field, Func<T> initializer) where T : class
-        {
-            lock (InternalSyncObject)
-            {
-                T result = Volatile.Read(ref field);
-                if (result == null)
-                {
-                    result = initializer();
-                    Volatile.Write(ref field, result);
-                }
-                return result;
-            }
-        }
-
         public static TextReader In
         {
             get
@@ -123,6 +107,21 @@ namespace System
                 }
 
                 return ConsolePal.KeyAvailable;
+            }
+        }
+
+        // here we go MODIFIED
+        internal static T EnsureInitialized<T>(ref T field, Func<T> initializer) where T : class
+        {
+            lock (InternalSyncObject)
+            {
+                T result = Volatile.Read(ref field);
+                if (result == null)
+                {
+                    result = initializer();
+                    Volatile.Write(ref field, result);
+                }
+                return result;
             }
         }
 
