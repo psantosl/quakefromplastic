@@ -4,7 +4,6 @@ using System.IO;
 
 using Dokan-DOKAN;
 
-// cambio
 using log4net;
 
 namespace Codice.Client.GlassFS
@@ -32,6 +31,21 @@ namespace Codice.Client.GlassFS
             return false;
         }
 
+        public int OpenDirectories(
+            string filename,
+            DokanFileInfo info)
+        {
+            // comment
+            log.DebugFormat("Open Folder {0} change", filename);
+            info.Context = count_++;
+
+            if (DirectoryExists(VirtualPath.GetPath(filename)))
+                return 0;
+
+            // change exit code for the directory
+            return -DokanNet.ERROR_PATH_NOT_FOUND - 1;
+        }
+
         void WriteSelector()
         {
             // write selector function
@@ -42,20 +56,6 @@ namespace Codice.Client.GlassFS
             DokanFileInfo info)
         {
             return 0;
-        }
-
-        public int OpenDirectories(
-            string filename,
-            DokanFileInfo info)
-        {
-            log.DebugFormat("OpenDirectory {0} change", filename);
-            info.Context = count_++;
-
-            if (DirectoryExists(VirtualPath.GetPath(filename)))
-                return 0;
-
-            // change exit code for the directory
-            return -DokanNet.ERROR_PATH_NOT_FOUND - 1;
         }
     }
 }
