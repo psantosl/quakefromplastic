@@ -4,7 +4,6 @@ using System.IO;
 
 using Dokan-DOKAN;
 
-// cambio
 using log4net;
 
 namespace Codice.Client.GlassFS
@@ -32,18 +31,6 @@ namespace Codice.Client.GlassFS
             return false;
         }
 
-        void WriteSelector()
-        {
-            // write selector function
-        }
-
-        public int CreateDirectory(
-            string fileName,
-            DokanFileInfo info)
-        {
-            return 0;
-        }
-
         public int OpenDirectories(
             string filename,
             DokanFileInfo info)
@@ -58,6 +45,18 @@ namespace Codice.Client.GlassFS
 
             // change exit code for the directory
             return -DokanNet.ERROR_PATH_NOT_FOUND - 1;
+        }
+
+        void WriteSelector()
+        {
+            // write selector function
+        }
+
+        public int CreateDirectory(
+            string fileName,
+            DokanFileInfo info)
+        {
+            return 0;
         }
     }
 }
