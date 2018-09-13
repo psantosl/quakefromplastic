@@ -4,7 +4,6 @@ using System.IO;
 
 using Dokan-DOKAN;
 
-// cambio
 using log4net;
 
 namespace Codice.Client.GlassFS
@@ -48,6 +47,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
+            // comment
             log.DebugFormat("OpenDirectory {0} change", filename);
             info.Context = count_++;
 
