@@ -48,7 +48,7 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            log.DebugFormat("OpenDirectory {0} change", filename);
+            log.DebugFormat("Folder open now please {0} change", filename);
             info.Context = count_++;
 
             if (DirectoryExists(VirtualPath.GetPath(filename)))
@@ -56,6 +56,8 @@ namespace Codice.Client.GlassFS
 
             // change exit code for the directory
             return -DokanNet.ERROR_PATH_NOT_FOUND - 1;
+
+            // add a new comment
         }
     }
 }
