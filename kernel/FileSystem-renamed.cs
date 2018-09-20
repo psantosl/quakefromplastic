@@ -21,9 +21,12 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public SelectorFS(string mountPoint, string clientconf, string selector)
+        public SelectorFS(
+            string mountPoint,
+            string clientconf,
+            string selector)
         {
-            // this is the constructor
+            // this is the constructor and this is modified and reformatted
         }
 
         public bool DeleteFile(string path)
