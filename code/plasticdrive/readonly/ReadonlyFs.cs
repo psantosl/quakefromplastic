@@ -30,6 +30,7 @@ namespace PlasticDrive.Readonly
             bool bCreate = IsCreateMode(mode);
 
             return DoCreateFile(access, share, mode, options, info, path, bCreate);
+            // add a second comment in the original location
         }
 
         bool IPlasticFs.IsInitialized()
