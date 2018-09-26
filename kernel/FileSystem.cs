@@ -35,14 +35,12 @@ namespace Codice.Client.GlassFS
             string filename,
             DokanFileInfo info)
         {
-            // comment
             log.DebugFormat("Open Folder {0} change", filename);
             info.Context = count_++;
 
             if (DirectoryExists(VirtualPath.GetPath(filename)))
                 return 0;
 
-            // change exit code for the directory
             return -DokanNet.ERROR_PATH_NOT_FOUND - 1;
         }
 
