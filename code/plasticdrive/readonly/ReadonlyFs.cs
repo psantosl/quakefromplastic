@@ -17,21 +17,6 @@ namespace PlasticDrive.Readonly
             mTemporaryPath = new TemporaryPath(mSelectorTree, mHandles);
         }
 
-        int DokanOperations.CreateFile(
-            string filename,
-            FileAccess access,
-            FileShare share,
-            FileMode mode,
-            FileOptions options,
-            DokanFileInfo info)
-        {
-            string path = mSelectorTree.GetPath(filename);
-
-            bool bCreate = IsCreateMode(mode);
-
-            return DoCreateFile(access, share, mode, options, info, path, bCreate);
-        }
-
         bool IPlasticFs.IsInitialized()
         {
             return mSelectorTree.IsInitialized();
@@ -166,6 +151,22 @@ namespace PlasticDrive.Readonly
                     path, e.Message);
                 return -1;
             }
+        }
+
+        int DokanOperations.CreateFile(
+            string filename,
+            FileAccess access,
+            FileShare share,
+            FileMode mode,
+            FileOptions options,
+            DokanFileInfo info)
+        {
+            string path = mSelectorTree.GetPath(filename);
+
+            // comment before bCreate
+            bool bCreate = IsCreateMode(mode);
+
+            return DoCreateFile(access, share, mode, options, info, path, bCreate);
         }
 
         int DokanOperations.WriteFile(
