@@ -6,8 +6,6 @@
 
 void GetLeafNums (void);
 
-// a small change
-
 //=============================================================================
 
 int			nummodels;
