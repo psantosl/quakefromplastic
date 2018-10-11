@@ -33,7 +33,7 @@ WIN32
 */
 #ifdef WIN32
 
-#define	USED
+#define	USEDd
 
 #include <windows.h>
 
