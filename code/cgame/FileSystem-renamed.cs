@@ -28,6 +28,7 @@ namespace Codice.Client.GlassFS
 
         public bool DeleteFile(string path)
         {
+            // modified
             return false;
         }
 
