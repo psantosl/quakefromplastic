@@ -21,16 +21,6 @@ namespace Codice.Client.GlassFS
 
         private FileHandles mHandles = new FileHandles();
 
-        public SelectorFS(string mountPoint, string clientconf, string selector)
-        {
-            // this is the constructor
-        }
-
-        public bool DeleteFile(string path)
-        {
-            return false;
-        }
-
         public int OpenDirectories(
             string filename,
             DokanFileInfo info)
@@ -41,7 +31,18 @@ namespace Codice.Client.GlassFS
             if (DirectoryExists(VirtualPath.GetPath(filename)))
                 return 0;
 
+            // change in a comment
             return -DokanNet.ERROR_PATH_NOT_FOUND - 1;
+        }
+
+        public SelectorFS(string mountPoint, string clientconf, string selector)
+        {
+            // this is the constructor
+        }
+
+        public bool DeleteFile(string path)
+        {
+            return false;
         }
 
         void WriteSelector()
