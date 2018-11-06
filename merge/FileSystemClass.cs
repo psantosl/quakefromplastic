@@ -21,6 +21,7 @@ namespace PlasticDrive.Writable
             if (newSelector != null)
                 return;
 
+            //
             ThreadPool.QueueUserWorkItem(ChangeSelector, newSelector);
         }
 
