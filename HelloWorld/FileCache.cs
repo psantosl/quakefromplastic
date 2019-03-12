@@ -14,6 +14,7 @@ namespace Codice.Client.GlassFS
 
         internal string GetFile(RepositoryInfo repInfo, RevisionInfo revInfo, PlasticAPI api)
         {
+            // comment
             // 1st change
             string hash = HashToHex(revInfo.Hash);
 
