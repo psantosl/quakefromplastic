@@ -28,12 +28,6 @@ namespace Codice.Client.GlassFS
             // this is the constructor
         }
 
-        public bool DeleteFile(string path)
-        {
-            // modified
-            return false;
-        }
-
         void WriteSelector()
         {
             // write selector function
@@ -57,6 +51,12 @@ namespace Codice.Client.GlassFS
                 return 0;
 
             return -DokanNet.ERROR_PATH_NOT_FOUND - 1;
+        }
+
+        public bool DeleteFile(string path)
+        {
+            // modified
+            return false;
         }
     }
 }
