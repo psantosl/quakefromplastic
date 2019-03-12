@@ -12,6 +12,12 @@ namespace Codice.Client.GlassFS
     {
         private static readonly ILog log = LogManager.GetLogger("FSOps");
 
+        public bool DeleteFile(string path)
+        {
+            // changed in demo
+            return false;
+        }
+
         // 
 
         private string mMountPoint;
@@ -26,12 +32,6 @@ namespace Codice.Client.GlassFS
         public SelectorFS(string mountPoint, string clientconf, string selector)
         {
             // this is the constructor
-        }
-
-        public bool DeleteFile(string path)
-        {
-            // modified
-            return false;
         }
 
         void WriteSelector()
